@@ -1,0 +1,309 @@
+# AI Development Configuration - Universal Catalog
+
+**Purpose**: Hub-and-spoke entry point for AI-assisted development patterns, workflows, and configurations.
+
+**Total Lines**: ~10,300 lines (conversation context) + 3,400 lines (web-context research for repository maintenance)
+
+---
+
+## Quick Start
+
+### New Machine Setup
+1. Review [configs/tools.md](configs/tools.md) - Install required tools
+2. Apply [configs/claude-permissions.json](configs/claude-permissions.json) - Set up permissions (see [claude-permissions.md](configs/claude-permissions.md))
+3. Read [instructions/claude-code-memory.md](instructions/claude-code-memory.md) - Configure preferences
+
+### Understanding AI Architecture
+1. Review [instructions/multi-agent-orchestration.md](instructions/multi-agent-orchestration.md) - Framework comparison
+2. Read [instructions/agent-memory-patterns.md](instructions/agent-memory-patterns.md) - Memory management
+3. Check [instructions/self-correction-patterns.md](instructions/self-correction-patterns.md) - Error recovery
+
+### Starting a New Task
+1. Review [instructions/coding-principles.md](instructions/coding-principles.md) - Testing strategies, error handling, quality gates
+2. Check [instructions/development-practices.md](instructions/development-practices.md) - Git commit format, destructive command safety
+3. Use [workflows/one-liners.md](workflows/one-liners.md) - Command reference
+
+### Building with AI
+1. Start with [workflows/specification-driven-development.md](workflows/specification-driven-development.md) - Define what to build
+2. Follow [workflows/tdd-development.md](workflows/tdd-development.md) - Build with quality
+3. Use [workflows/code-review-patterns.md](workflows/code-review-patterns.md) - Validate before deployment
+
+---
+
+## File Catalog
+Note: Don't store file/line/word counts in this repo. Maintain references purely on a file path/name basis. Instead, generate them for reporting to the user after updates.
+
+### Configs (configs/)
+
+Configuration files and permission systems.
+
+| File | Purpose |
+|------|---------|
+| [claude-permissions.json](configs/claude-permissions.json) | 3-tier permissions with hooks: allow (auto), ask (approve), deny (blocked) |
+| [claude-permissions.md](configs/claude-permissions.md) | Permissions documentation, tiers, hooks system, installation, customization |
+| [claude-allowed-prompts.md](configs/claude-allowed-prompts.md) | Plan mode semantic permissions, intent-based matching, best practices |
+| [mcp-integration-patterns.md](configs/mcp-integration-patterns.md) | MCP usage patterns: scopes (user/local/project), Todoist, GitHub, Google Drive integrations |
+| [tools.md](configs/tools.md) | Tool reference (Claude Code, rclone, pandoc, gh, jq) with installation patterns |
+| [claude-permissions-future-consideration.json](configs/claude-permissions-future-consideration.json) | Permission decisions and workflow rationale |
+
+### Instructions (instructions/)
+
+Agent architecture, coordination, and development principles.
+
+| File | Purpose |
+|------|---------|
+| [multi-agent-orchestration.md](instructions/multi-agent-orchestration.md) | **Web Research**: Framework comparison (LangGraph, CrewAI, AutoGen), Google's 8 design patterns, state management, benchmarks |
+| [observability-patterns.md](instructions/observability-patterns.md) | **Web Research**: Traces/spans/evals, HITL patterns, leading platforms, risk-based routing, regulatory compliance |
+| [self-correction-patterns.md](instructions/self-correction-patterns.md) | **Web Research**: Two-layer architecture, monitoring signals, intervention strategies, error recovery, self-healing |
+| [context-efficiency.md](instructions/context-efficiency.md) | Context management: Single Source of Truth, cross-references, token budget, before-adding checklist |
+| [development-practices.md](instructions/development-practices.md) | **Unique practices**: Git commit guidelines (prose format), destructive command safety, reference priority order |
+| [agent-memory-patterns.md](instructions/agent-memory-patterns.md) | **Web Research**: Memory taxonomy (Factual/Experiential/Working), lifecycle management, context anti-patterns |
+| [coding-principles.md](instructions/coding-principles.md) | **Testing strategies reference**: TDD, BDD, ATDD, test-after, hybrid approaches with 2026 research; Error handling, type safety, security, quality gates |
+| [claude-code-memory.md](instructions/claude-code-memory.md) | User preferences, personality settings, memory management guidelines |
+
+### Workflows (workflows/)
+
+Practical development workflow patterns and command references.
+
+| File | Purpose |
+|------|---------|
+| [code-review-patterns.md](workflows/code-review-patterns.md) | **Web Research**: Prompt engineering, multi-dimensional parallel review, AI-on-AI patterns, quality gates, CI/CD integration |
+| [script-patterns.md](workflows/script-patterns.md) | Bash automation patterns: fail-fast, atomic updates, safe operations, timeouts, polling |
+| [tdd-development.md](workflows/tdd-development.md) | **Web Research**: TDD with LLMs, chunked workflows, AI evals, test generation, testing pyramid |
+| [automated-development-workflow.md](workflows/automated-development-workflow.md) | **Vision**: 8-phase automated workflow (analysis → TDD → implementation → multi-dimensional review → PR → merge) |
+| [one-liners.md](workflows/one-liners.md) | Quick command reference for all tools (version checks, rclone, pandoc, gh, git, jq) |
+| [specification-driven-development.md](workflows/specification-driven-development.md) | **Web Research**: SDD methodology, GitHub Spec Kit workflow, living documentation |
+| [google-docs-setup.md](workflows/google-docs-setup.md) | Google Docs integration via rclone + pandoc (download, convert, edit workflow) |
+
+### Templates (templates/)
+
+Reusable templates for agent instructions, component specs, and quick references.
+
+| File | Purpose |
+|------|---------|
+| [agent-instruction-patterns.md](templates/agent-instruction-patterns.md) | 9 reusable agent instruction patterns: Supreme Constraints, Path Resolution, Evidence-Based, etc. |
+| [workflow-automation-pattern.md](templates/workflow-automation-pattern.md) | **Generic workflow pattern**: Phase-based development with entry/exit criteria, validation gates, multi-language examples |
+| [frontend-component-spec.md](templates/frontend-component-spec.md) | Component specification template: user stories, API, state, accessibility, success criteria |
+| [quick-reference/agent-definition.md](templates/quick-reference/agent-definition.md) | Quick fill-in template for defining AI agents |
+| [quick-reference/component-spec.md](templates/quick-reference/component-spec.md) | One-page component spec template |
+| [quick-reference/quality-gate.md](templates/quick-reference/quality-gate.md) | Quick template for validation scripts |
+| [quick-reference/decision-table.md](templates/quick-reference/decision-table.md) | Quick template for error handling decision tables |
+
+---
+
+## File Relationships
+
+```
+README.md (YOU ARE HERE)
+    ├── Quick Start
+    │   ├─→ configs/tools.md (tool installation)
+    │   ├─→ configs/claude-permissions.json (permission setup)
+    │   └─→ instructions/claude-code-memory.md (preferences)
+    │
+    ├── AI Agent Architecture
+    │   ├─→ instructions/multi-agent-orchestration.md (framework selection)
+    │   │   └─→ instructions/agent-memory-patterns.md (state management)
+    │   ├─→ instructions/self-correction-patterns.md (error recovery)
+    │   └─→ instructions/observability-patterns.md (monitoring)
+    │       └─→ instructions/self-correction-patterns.md (HITL integration)
+    │
+    ├── Core Principles
+    │   ├─→ instructions/coding-principles.md (universal principles)
+    │   ├─→ instructions/development-practices.md (daily practices)
+    │   └─→ instructions/context-efficiency.md (documentation patterns)
+    │
+    └── Development Workflows
+        ├─→ workflows/specification-driven-development.md
+        │   └─→ workflows/tdd-development.md (implementation with tests)
+        ├─→ workflows/tdd-development.md
+        │   └─→ workflows/code-review-patterns.md (quality gates)
+        ├─→ workflows/code-review-patterns.md
+        │   └─→ instructions/observability-patterns.md (CI/CD integration)
+        ├─→ workflows/google-docs-setup.md
+        │   ├─→ configs/tools.md (rclone + pandoc setup)
+        │   └─→ workflows/one-liners.md (commands)
+        ├─→ workflows/script-patterns.md (bash automation)
+        └─→ workflows/one-liners.md (command SPoT)
+```
+
+---
+
+## Information Architecture
+
+### Single Source of Truth (SPoT)
+
+Each type of information has ONE authoritative location:
+
+**Agent Architecture**:
+- **Framework selection**: `instructions/multi-agent-orchestration.md`
+- **Memory management**: `instructions/agent-memory-patterns.md`
+- **Error recovery**: `instructions/self-correction-patterns.md`
+- **Monitoring**: `instructions/observability-patterns.md`
+
+**Development Practices**:
+- **Core principles**: `instructions/coding-principles.md`
+- **Daily practices**: `instructions/development-practices.md`
+- **Context efficiency**: `instructions/context-efficiency.md`
+
+**Workflows**:
+- **Code review**: `workflows/code-review-patterns.md`
+- **TDD patterns**: `workflows/tdd-development.md`
+- **SDD workflow**: `workflows/specification-driven-development.md`
+- **Bash automation**: `workflows/script-patterns.md`
+- **Commands**: `workflows/one-liners.md`
+
+**Configuration**:
+- **Permissions**: `configs/claude-permissions.md`
+- **MCP integration**: `configs/mcp-integration-patterns.md`
+- **Tools**: `configs/tools.md`
+- **User preferences**: `instructions/claude-code-memory.md`
+
+### Cross-Reference Pattern
+
+Files reference each other instead of duplicating:
+- Example: `code-review-patterns.md` references `observability-patterns.md` for CI/CD monitoring
+- Example: `google-docs-setup.md` references `tools.md` for rclone setup
+- Example: `multi-agent-orchestration.md` references `agent-memory-patterns.md` for state management
+- Benefit: Each pattern documented once, referenced many times
+
+### Progressive Disclosure
+
+1. **Entry point** (README.md) - Navigate to what you need
+2. **Pattern files** - Complete patterns with examples and sources
+3. **Cross-references** - Related patterns and deeper dives
+4. **Web research** (web-context/) - Original research synthesis
+
+---
+
+## Usage Guidelines
+
+### When to Read Which File
+
+**Starting a new AI project:**
+1. `instructions/multi-agent-orchestration.md` - Choose framework (LangGraph, CrewAI, AutoGen)
+2. `workflows/specification-driven-development.md` - Define what to build
+3. `workflows/tdd-development.md` - Build with quality
+4. `workflows/code-review-patterns.md` - Quality gates
+
+**Production deployment:**
+1. `instructions/observability-patterns.md` - Set up monitoring
+2. `configs/claude-permissions.md` - Configure human oversight
+3. `instructions/self-correction-patterns.md` - Enable autonomous recovery
+
+**Starting a new task:**
+1. `instructions/coding-principles.md` - Testing strategies, error handling, security principles
+2. `instructions/development-practices.md` - Git commit guidelines, destructive command safety
+3. `workflows/one-liners.md` - Commands you'll need
+
+**Tool configuration:**
+1. `configs/tools.md` - Which tools and how to install
+2. `configs/mcp-integration-patterns.md` - MCP server setup
+3. `workflows/one-liners.md` - Commands for that tool
+
+**Optimizing existing system:**
+1. `instructions/agent-memory-patterns.md` - Improve context efficiency
+2. `instructions/self-correction-patterns.md` - Add error recovery
+3. `workflows/code-review-patterns.md` - Enhance quality gates
+4. `instructions/context-efficiency.md` - Documentation patterns
+
+**Troubleshooting issues:**
+1. `instructions/observability-patterns.md` - Use traces to diagnose
+2. `instructions/self-correction-patterns.md` - Implement recovery strategies
+3. `workflows/code-review-patterns.md` - Analyze quality gaps
+
+### Adding New Content
+
+**CRITICAL - Context Efficiency Checklist:**
+
+Before adding content to any memory file:
+1. Does this information already exist elsewhere? → Reference it instead
+2. Is this universal or project-specific? → Universal goes here, project-specific stays in project
+3. Will this be used in multiple future sessions? → If not, don't add it
+4. Can this be found in official docs? → Reference the docs instead
+5. Is this a pattern or a one-off solution? → Only patterns belong in memory
+
+**Token Budget**: Every line added consumes context in every future session. Make it count.
+
+**Where to add new content:**
+- **AI agent patterns**: `instructions/multi-agent-orchestration.md` or `instructions/self-correction-patterns.md`
+- **Testing strategies**: `instructions/coding-principles.md` (testing approaches, quality standards)
+- **Git/safety practices**: `instructions/development-practices.md` (commit format, destructive commands)
+- **Tool setup**: `configs/tools.md` or `configs/mcp-integration-patterns.md`
+- **Commands**: `workflows/one-liners.md`
+- **Workflow**: New file in `workflows/` (e.g., `workflows/docker-workflow.md`)
+- **Templates**: New file in `templates/` or `templates/quick-reference/`
+- **Preferences**: `instructions/claude-code-memory.md`
+
+---
+
+## Maintenance
+
+### Version Control
+
+- **Version all files** except sensitive configs (API keys, OAuth tokens in ~/.claude.json)
+- **Commit changes** when updating patterns or adding workflows
+- **Keep DRY**: Remove duplicated content, use cross-references
+
+### File Footer Updates
+
+**IMPORTANT**: When editing any file in this repository, update the file footer with the current date.
+
+- Add or update the **Updated** field in the footer with today's date (YYYY-MM-DD format)
+- Increment the version number if making significant changes (optional for minor edits)
+- Example footer format: `**Version**: X.Y.Z | **Created**: YYYY-MM-DD | **Updated**: YYYY-MM-DD | **Source**: Description`
+
+### Quality Check
+
+Periodically review for:
+- Duplicated content → Consolidate or cross-reference
+- Outdated information → Update or remove
+- Missing cross-references → Add links
+- Overly verbose sections → Simplify
+
+---
+
+## Content Sources
+
+### Web Research (2026)
+
+Files marked "**Web Research**" are synthesized from 100+ industry sources:
+- Academic research (arXiv, IEEE, ACM papers 2025-2026)
+- Industry practitioner blogs (Google, Anthropic, OpenAI)
+- Framework documentation (LangGraph, CrewAI, AutoGen)
+- Platform comparisons and benchmarks
+- Observability tool documentation
+
+**Research Directory**: `web-context/` contains raw research synthesis
+
+### User Created
+
+Templates and workflows created for practical use:
+- Frontend component specs and workflows
+- Agent instruction patterns
+- Quick reference templates
+
+### Industry Standards
+
+Bash automation, coding principles, development practices:
+- Established shell scripting best practices
+- Universal software engineering principles
+- Git workflow standards
+
+---
+
+## Design Principles
+
+This structure follows:
+
+1. **Hub-and-Spoke**: README.md as universal entry point
+2. **Single Source of Truth**: Each pattern lives in exactly one place
+3. **Cross-Reference Over Duplication**: Files reference each other
+4. **Progressive Disclosure**: Entry point → patterns → details → sources
+5. **Context Efficiency**: Maximize value per token, minimize redundancy
+6. **Web Research Foundation**: AI patterns grounded in 2026 industry research
+
+**Result**: Comprehensive, non-redundant catalog of AI development patterns and practical workflows.
+
+---
+
+**Version**: 2.0.1 | **Created**: 2026-01-20 | **Updated**: 2026-01-22 | **Source**: 2026 Web Research + Practical Workflows

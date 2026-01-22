@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Permissions excluded from allow list. Git write operations moved to 'ask' tier (require approval each time). Package managers not used excluded entirely.",
+  "permission_categories": {
+    "git_write_operations": {
+      "status": "IN ASK TIER - Requires approval each time",
+      "reason": "To avoid polluting git logs with lots of small automated iterations, especially when working on main directly in personal repos",
+      "current_behavior": "These operations require explicit approval for EACH invocation via the 'ask' permission tier with hooks",
+      "entries": [
+        "Bash(git commit:*)",
+        "Bash(git push)",
+        "Bash(git push -u:*)",
+        "Bash(git push --set-upstream:*)",
+        "Bash(git merge:*)"
+      ],
+      "note": "Located in 'ask' section of claude-permissions.json. Hooks ensure re-prompting each time."
+    },
+
+    "pnpm": {
+      "reason": "Package manager not currently used",
+      "entries": [
+        "// ==================== PNPM (IF USED) ====================",
+        "Bash(pnpm build:*)",
+        "Bash(pnpm build)",
+        "Bash(pnpm test:*)",
+        "Bash(pnpm test)",
+        "Bash(pnpm lint:*)",
+        "Bash(pnpm lint)",
+        "Bash(pnpm run:*)",
+        "Bash(pnpm list:*)",
+        "Bash(pnpm --version)"
+      ],
+      "note": "Re-enable if adopting pnpm as package manager. Follow same pattern as npm/yarn."
+    }
+  },
+
+  "workflow_notes": {
+    "git_write_operations": {
+      "current_status": "IN ASK TIER - Works well with manual approval workflow",
+      "current_workflow": "Git commits/pushes require explicit approval each time via 'ask' permissions with hooks. This prevents commit noise while still enabling AI-assisted development.",
+      "benefits_of_ask_tier": [
+        "Prevents unintended commit pollution",
+        "Maintains conscious control over git history",
+        "Each operation explicitly approved",
+        "Works well for direct-to-main workflows"
+      ],
+      "when_to_move_to_allow": [
+        "If consistently working with feature branch + PR workflow where commit noise is acceptable",
+        "If automated commits become necessary for workflow",
+        "If pair programming with AI on larger features where frequent commits are valuable"
+      ],
+      "alternative_approach": "Could add specific commit patterns to allow (e.g., 'git commit -m \"WIP:*\"') for work-in-progress commits"
+    },
+
+    "pnpm": {
+      "current_workflow": "Using npm/yarn as package managers",
+      "when_to_reconsider": [
+        "If project adopts pnpm for faster installs",
+        "If working in monorepo using pnpm workspaces"
+      ],
+      "alternative_approach": "Simply copy npm patterns when needed"
+    }
+  },
+
+  "how_to_restore": {
+    "single_permission": "Copy desired entry from this file to claude-permissions.json allow list",
+    "entire_category": "Copy entire section (e.g., all git write operations) to allow list",
+    "test_first": "Consider testing in project-specific .claude/settings.json before adding to global settings",
+    "update_both": "Remember to update both current/configs/claude-permissions.json (repo) and ~/.claude/settings.local.json (active settings)"
+  }
+}
