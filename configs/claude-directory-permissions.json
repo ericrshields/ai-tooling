@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Safe directory patterns for Claude Code permissions. Copy these patterns into settings.local.json to auto-approve Write/Edit operations in designated safe directories. See claude-permissions.md for detailed path pattern documentation.",
+
+  "safeDirectories": {
+    "description": "Directories where Write/Edit operations can be auto-approved. Use tilde (~) for portability across machines.",
+
+    "universal": {
+      "description": "Safe directories that apply to any development environment",
+      "directories": [
+        {
+          "path": "//tmp/**/*",
+          "description": "Temporary files (absolute path)",
+          "operations": ["Read", "Write", "Edit"]
+        }
+      ]
+    },
+
+    "aiTooling": {
+      "description": "AI context and tooling repositories",
+      "directories": [
+        {
+          "path": "~/.ai-context-store/**/*",
+          "description": "AI context store repository",
+          "operations": ["Read", "Write", "Edit"]
+        },
+        {
+          "path": "~/.ai/**/*",
+          "description": "AI configuration and instructions repository",
+          "operations": ["Read", "Write", "Edit"]
+        }
+      ]
+    },
+
+    "projects": {
+      "description": "Project-specific safe directories (customize per environment)",
+      "directories": [
+        {
+          "path": "~/projects/sandbox/**/*",
+          "description": "Sandbox/experimental projects",
+          "operations": ["Read", "Write", "Edit"]
+        }
+      ]
+    }
+  },
+
+  "usage": {
+    "description": "Copy patterns into settings.local.json",
+    "example": {
+      "permissions": {
+        "allow": [
+          "Write(~/.ai-context-store/**/*)",
+          "Edit(~/.ai-context-store/**/*)",
+          "Write(~/.ai/**/*)",
+          "Edit(~/.ai/**/*)",
+          "Write(//tmp/**/*)",
+          "Edit(//tmp/**/*)"
+        ]
+      }
+    }
+  }
+}

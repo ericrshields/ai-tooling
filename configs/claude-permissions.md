@@ -295,6 +295,64 @@ Block specific patterns:
 }
 ```
 
+### Path Patterns (File Operations)
+
+Claude Code supports multiple path pattern types for scoping file operations like `Read`, `Edit`, and `Write`:
+
+| Pattern Type | Meaning | Example | Matches |
+|---|---|---|---|
+| `~/path` | Path from **home directory** | `Read(~/.zshrc)` | `/home/user/.zshrc` |
+| `//path` | **Absolute** path from filesystem root | `Write(//tmp/scratch.txt)` | `/tmp/scratch.txt` |
+| `/path` | Path **relative to settings file location** | `Edit(/src/**/*.ts)` | `./src/**/*.ts` from settings file |
+| `path` or `./path` | Path **relative to current working directory** | `Read(*.env)` | Files in current directory |
+
+**Important**: A single slash path like `/Users/alice/file` is NOT absolute—it's relative to your settings file location. Use double slashes `//Users/alice/file` for true absolute paths.
+
+**Wildcard Support** (gitignore specification):
+- `*` matches files in a **single directory** only
+- `**` matches **recursively across directories**
+
+**Examples**:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "// Home directory paths (portable across machines)",
+      "Read(~/.zshrc)",
+      "Read(~/.ai-context-store/**/*)",
+      "Write(~/.config/myapp/**/*)",
+
+      "// Absolute paths (use double slash)",
+      "Write(//tmp/**/*)",
+      "Edit(//var/log/myapp.log)",
+
+      "// Project-relative paths (relative to settings file)",
+      "Read(/docs/**)",
+      "Edit(/src/**/*.ts)",
+
+      "// CWD-relative paths",
+      "Read(*.env)",
+      "Write(./output/**)"
+    ],
+    "deny": [
+      "Read(~/.aws/**)",
+      "Read(~/.ssh/id_*)",
+      "Read(./.env)",
+      "Edit(//etc/passwd)"
+    ]
+  }
+}
+```
+
+**Use Cases**:
+- **Tilde expansion** (`~`): Best for home directory paths that should work across different machines/users
+- **Absolute paths** (`//`): For system paths like `/tmp` or `/var`
+- **Relative paths** (`/`): For project-specific paths when settings are in project root
+- **CWD-relative** (`./`): For current working directory operations
+
+**Note**: Variable substitution like `${safeDirectories}` is **not supported**. For shared permissions, use the settings precedence hierarchy (managed → local → project → user) or reference `claude-directory-permissions.json` for safe directory lists.
+
 ---
 
 ## Security Considerations
