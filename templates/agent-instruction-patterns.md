@@ -671,6 +671,45 @@ After generating tests:
 6. **Iterate**: Start strict, relax as patterns prove reliable
 7. **Document assumptions**: Make implicit requirements explicit
 
+### Using Emphasis Markers (RFC 2119 Keywords)
+
+**When to use ALL CAPS emphasis markers** - based on RFC 2119 requirement levels:
+
+**Absolute Requirements/Prohibitions**:
+- **MUST / REQUIRED**: Absolute requirement that must be satisfied
+- **MUST NOT / SHALL NOT**: Absolute prohibition
+- **NEVER**: Absolute prohibition (colloquial equivalent to MUST NOT)
+- **ALWAYS**: Absolute requirement (colloquial equivalent to MUST)
+
+**Strong Recommendations**:
+- **SHOULD / RECOMMENDED**: Strong recommendation, but valid exceptions may exist
+- **SHOULD NOT / NOT RECOMMENDED**: Strong discouragement, but valid exceptions may exist
+
+**Optional**:
+- **MAY / OPTIONAL**: Truly optional, implementer's choice
+
+**Emphasis/Severity**:
+- **CRITICAL**: Safety-critical rules preventing data loss, corruption, or security issues
+- **IMPORTANT**: Key guidelines requiring attention, but not absolute requirements
+
+**Good examples**:
+```markdown
+NEVER modify source code when in read-only analysis mode
+MUST verify all changes pass tests before committing
+ALWAYS read files before editing them
+SHOULD prefer existing patterns over creating new ones
+MAY use test-after approach for UI layout code
+CRITICAL: Every line in memory files consumes context in every future session
+```
+
+**When NOT to use emphasis markers**:
+- General preferences without strong rationale: "Prefer X over Y" (not "ALWAYS use X")
+- Context-dependent choices without clear winner: "Consider using X when Y" (not "MUST use X")
+- Best practices that allow flexibility: "Use descriptive names" (not "ALWAYS use 50+ character names")
+- Stylistic guidelines: "Keep functions small" (not "NEVER write functions over 10 lines")
+
+**Principle**: Emphasis markers signal requirement levels using RFC 2119 conventions. MUST/NEVER for absolute constraints, SHOULD for strong recommendations with possible exceptions, MAY for truly optional. Overusing them dilutes effectiveness—reserve for true safety/correctness/quality requirements.
+
 ---
 
 ## Anti-Patterns
@@ -707,4 +746,4 @@ Use the standard approach for this.
 - [quality-gates.md](../configs/quality-gates.md) - Validation patterns
 - [quick-reference/agent-definition.md](quick-reference/agent-definition.md) - Quick template
 
-**Version**: 1.0.0 | **Created**: 2026-01-16
+**Version**: 1.1.0 | **Created**: 2026-01-16 | **Updated**: 2026-01-22
