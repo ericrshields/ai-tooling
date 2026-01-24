@@ -161,6 +161,3 @@ When researching solutions or learning new technologies, prioritize sources in t
 - [workflows/script-patterns.md](../workflows/script-patterns.md) - Safe automation, atomic operations
 - [workflows/one-liners.md](../workflows/one-liners.md) - Command reference
 
----
-
-**Version**: 2.0.0 | **Created**: 2026-01-15 | **Updated**: 2026-01-21 | **Change**: Removed redundant content, kept unique practices

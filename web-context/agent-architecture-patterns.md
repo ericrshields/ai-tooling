@@ -371,6 +371,3 @@ Generate → Critique → Revise → Repeat until convergence
 - [Self-Healing AI Systems](https://aithority.com/machine-learning/self-healing-ai-systems-how-autonomous-ai-agents-detect-prevent-and-fix-operational-failures/)
 - [Architecting efficient context-aware multi-agent framework for production](https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/)
 
----
-
-**Created**: 2026-01-20 | **Source**: Web research synthesis

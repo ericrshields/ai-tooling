@@ -747,6 +747,3 @@ project-root/
 - [How to write a good spec for AI agents - Addy Osmani](https://addyosmani.com/blog/good-spec/)
 - [Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
 
----
-
-**Created**: 2026-01-20 | **Source**: Web research synthesis on specification-driven development

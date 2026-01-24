@@ -439,82 +439,19 @@ chmod +x script.sh
 
 ---
 
-## Examples
+## Configuration Examples
 
-### Example 1: Frontend Development
+**Frontend Development**:
+- Allow: `npm run dev/build/test`, `npx eslint/prettier`, git operations, read source files
+- Deny: `npm publish`, reading `.env` files
 
-Allow all common frontend commands:
+**DevOps (Safe Operations)**:
+- Allow: `kubectl get/describe/logs`, `docker ps/logs`, `terraform plan`, cloud read operations
+- Deny: Delete operations (`kubectl delete`, `docker rm`, `terraform destroy`)
 
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(npm run dev:*)",
-      "Bash(npm run build:*)",
-      "Bash(npm test:*)",
-      "Bash(npx eslint:*)",
-      "Bash(npx prettier:*)",
-      "Bash(git:*)",
-      "Read(**/*.{ts,tsx,js,jsx})",
-      "Glob(**/*.{ts,tsx})"
-    ],
-    "deny": [
-      "Bash(npm publish:*)",
-      "Read(.env*)"
-    ]
-  }
-}
-```
-
-### Example 2: DevOps (Safe Operations)
-
-Allow infrastructure inspection:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(kubectl get:*)",
-      "Bash(kubectl describe:*)",
-      "Bash(kubectl logs:*)",
-      "Bash(docker ps:*)",
-      "Bash(docker logs:*)",
-      "Bash(terraform plan:*)",
-      "Bash(aws s3 ls:*)",
-      "Bash(gcloud compute instances list:*)"
-    ],
-    "deny": [
-      "Bash(kubectl delete:*)",
-      "Bash(terraform destroy:*)",
-      "Bash(docker rm:*)"
-    ]
-  }
-}
-```
-
-### Example 3: Data Science
-
-Allow analysis, prevent data deletion:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "Bash(python:*)",
-      "Bash(jupyter:*)",
-      "Bash(pip list:*)",
-      "Read(**/*.{py,ipynb,csv})",
-      "Bash(head:*)",
-      "Bash(wc:*)"
-    ],
-    "deny": [
-      "Bash(rm data/**)",
-      "Bash(rm models/**)",
-      "Read(**/*credentials*)"
-    ]
-  }
-}
-```
+**Data Science**:
+- Allow: `python`, `jupyter`, `pip list`, read data files (`.py`, `.ipynb`, `.csv`)
+- Deny: Delete data/models, read credentials
 
 ---
 
@@ -560,8 +497,3 @@ Allow analysis, prevent data deletion:
 - Security concern identified
 - Project no longer needs it
 
----
-
-**Version**: 1.0.0 | **Created**: 2026-01-16
-
-**Philosophy**: Trust but verify. Allow safe operations automatically while requiring approval for writes and forbidding dangerous commands. Optimize for developer productivity without sacrificing safety.

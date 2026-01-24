@@ -167,6 +167,3 @@ Specification-Driven Development has emerged as the standard practice for AI-ass
 - GitHub Spec Kit documentation
 - [specification-driven-development.md](../web-context/specification-driven-development.md) (detailed research)
 
----
-
-**Created**: 2026-01-20 | **Source**: Web research on SDD methodology

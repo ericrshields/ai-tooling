@@ -54,4 +54,7 @@ Fill-in-the-blank template for defining specialized AI agents.
 
 ---
 
-**For complete patterns, see:** [agent-instruction-patterns.md](../agent-instruction-patterns.md)
+**Related Documentation**:
+- [../agent-instruction-patterns.md](../agent-instruction-patterns.md) - Complete patterns
+- [../patterns/constraints-and-boundaries.md](../patterns/constraints-and-boundaries.md) - Detailed constraints
+- [../patterns/verification-and-output.md](../patterns/verification-and-output.md) - Output patterns

@@ -65,4 +65,6 @@ interface [ComponentName]Props {
 
 ---
 
-**For complete template, see:** [frontend-component-spec.md](../frontend-component-spec.md)
+**Related Documentation**:
+- [../frontend-component-spec.md](../frontend-component-spec.md) - Complete template
+- [../agent-instruction-patterns.md](../agent-instruction-patterns.md) - Agent patterns

@@ -42,4 +42,6 @@ esac
 
 ---
 
-**For complete patterns, see:** [agent-instruction-patterns.md](../agent-instruction-patterns.md)
+**Related Documentation**:
+- [../agent-instruction-patterns.md](../agent-instruction-patterns.md) - Complete patterns
+- [../patterns/verification-and-output.md](../patterns/verification-and-output.md) - Decision table details

@@ -323,6 +323,3 @@ Test new permissions safely:
 - [../instructions/context-efficiency.md](../instructions/context-efficiency.md) - Documentation patterns
 - [./one-liners.md](./one-liners.md) - Command reference
 
----
-
-**Version**: 1.0.0 | **Created**: 2026-01-22 | **Updated**: 2026-01-22 | **Source**: User session learnings

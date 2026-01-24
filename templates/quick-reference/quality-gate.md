@@ -49,4 +49,7 @@ fi
 
 ---
 
-**For complete patterns, see:** [quality-gates.md](../../configs/quality-gates.md) and [script-patterns.md](../../workflows/script-patterns.md)
+**Related Documentation**:
+- [../../configs/quality-gates.md](../../configs/quality-gates.md) - Quality gate patterns
+- [../../workflows/script-patterns.md](../../workflows/script-patterns.md) - Script automation
+- [../../guides/scripting/error-handling-patterns.md](../../guides/scripting/error-handling-patterns.md) - Error handling

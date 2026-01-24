@@ -361,9 +361,7 @@ Track unresolved decisions:
 
 ---
 
-**Template Version**: 1.0.0 | **Created**: 2026-01-16
-
 **Related Documentation**:
-- [frontend-workflow-config.yml](frontend-workflow-config.yml) - Development workflow
 - [agent-instruction-patterns.md](agent-instruction-patterns.md) - Instruction patterns
-- [coding-principles.md](../instructions/coding-principles.md) - Coding standards
+- [../instructions/coding-principles.md](../instructions/coding-principles.md) - Coding standards
+- [workflow-automation-pattern.md](workflow-automation-pattern.md) - Development workflow

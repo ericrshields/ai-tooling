@@ -191,6 +191,3 @@ For version checks, update commands, and troubleshooting steps, see `workflows/o
 }
 ```
 
----
-
-**Note**: This is a reference guide, not an installation status tracker. Actual installed versions and configurations may vary by machine.

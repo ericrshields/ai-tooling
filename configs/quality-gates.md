@@ -188,6 +188,3 @@ This quality gates index integrates with:
 - **Permission system**: claude-permissions.md enforces quality controls through permissions
 - **Coding principles**: coding-principles.md defines the standards that gates enforce
 
----
-
-**Version**: 1.0.0 | **Created**: 2026-01-21 | **Type**: Index/Hub for Quality Content

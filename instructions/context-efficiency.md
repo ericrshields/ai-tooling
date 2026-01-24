@@ -77,28 +77,13 @@ grep -r "same phrase" configs/ instructions/ templates/ workflows/
 **Pattern**:
 ```markdown
 ❌ BAD: Repeating content
-# File: workflows/google-docs-setup.md
-rclone is installed with: curl https://rclone.org/install.sh | sudo bash
-Config location: ~/.config/rclone/rclone.conf
-...
-
-# File: configs/tools.md
-rclone is installed with: curl https://rclone.org/install.sh | sudo bash
-Config location: ~/.config/rclone/rclone.conf
-...
+Two files duplicate rclone installation instructions and config locations.
 
 ✓ GOOD: Cross-reference
-# File: workflows/google-docs-setup.md
-See [configs/tools.md](../configs/tools.md) for rclone installation and configuration.
-
-# File: configs/tools.md
-[Full details about rclone here]
+One file has full rclone details, other file links to it.
 ```
 
-**Cross-Reference Format**:
-```markdown
-[Relative path](../path/to/file.md)  # Example - replace with actual file path
-```
+**Cross-Reference Standard**: Use relative paths from current file location with descriptive link text.
 
 ### 3. Progressive Disclosure
 
@@ -544,6 +529,3 @@ done
 - [development-practices.md](development-practices.md) - Documentation practices
 - [README.md](../README.md) - Hub-and-spoke catalog structure
 
-**Version**: 1.1.0 | **Created**: 2026-01-16 | **Updated**: 2026-01-21
-
-**Key Takeaway**: Every line in conversation context files should earn its place through frequent reuse across multiple sessions. When in doubt, reference instead of duplicate. Exclude web-context/ from context management as it contains research material for repository maintenance.

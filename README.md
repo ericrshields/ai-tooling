@@ -31,9 +31,10 @@
 ---
 
 ## File Catalog
-Note: Don't store file/line/word counts in this repo. Maintain references purely on a file path/name basis. Instead, generate them for reporting to the user after updates.
 
 ### Configs (configs/)
+
+Configuration files and permission systems.
 
 Configuration files and permission systems.
 
@@ -82,13 +83,33 @@ Reusable templates for agent instructions, component specs, and quick references
 
 | File | Purpose |
 |------|---------|
-| [agent-instruction-patterns.md](templates/agent-instruction-patterns.md) | 9 reusable agent instruction patterns: Supreme Constraints, Path Resolution, Evidence-Based, etc. |
-| [workflow-automation-pattern.md](templates/workflow-automation-pattern.md) | **Generic workflow pattern**: Phase-based development with entry/exit criteria, validation gates, multi-language examples |
+| [agent-instruction-patterns.md](templates/agent-instruction-patterns.md) | Hub for 9 reusable agent instruction patterns: Supreme Constraints, Path Resolution, Evidence-Based, etc. |
+| [workflow-automation-pattern.md](templates/workflow-automation-pattern.md) | Hub for phase-based workflow patterns with entry/exit criteria and validation gates |
 | [frontend-component-spec.md](templates/frontend-component-spec.md) | Component specification template: user stories, API, state, accessibility, success criteria |
 | [quick-reference/agent-definition.md](templates/quick-reference/agent-definition.md) | Quick fill-in template for defining AI agents |
 | [quick-reference/component-spec.md](templates/quick-reference/component-spec.md) | One-page component spec template |
 | [quick-reference/quality-gate.md](templates/quick-reference/quality-gate.md) | Quick template for validation scripts |
 | [quick-reference/decision-table.md](templates/quick-reference/decision-table.md) | Quick template for error handling decision tables |
+
+### Patterns (patterns/)
+
+Detailed implementation patterns split from hub files for focused reference.
+
+| Directory | Purpose |
+|-----------|---------|
+| [code-review/](patterns/code-review/) | Code review patterns: prompt engineering, parallel review, CI/CD integration |
+| [orchestration/](patterns/orchestration/) | Multi-agent orchestration: Google's 8 patterns, state management |
+| [observability/](patterns/observability/) | Observability patterns: monitoring, HITL, challenges and solutions |
+| [self-correction/](patterns/self-correction/) | Self-correction patterns: monitoring signals, intervention strategies |
+
+### Guides (guides/)
+
+Step-by-step guides split from workflow files for progressive disclosure.
+
+| Directory | Purpose |
+|-----------|---------|
+| [scripting/](guides/scripting/) | Bash scripting guides: error handling, safe operations |
+| [automation/](guides/automation/) | Automation guides: phase-based workflows, technology examples |
 
 ---
 
@@ -246,13 +267,26 @@ Before adding content to any memory file:
 - **Commit changes** when updating patterns or adding workflows
 - **Keep DRY**: Remove duplicated content, use cross-references
 
-### File Footer Updates
+### Quality Standards
 
-**IMPORTANT**: When editing any file in this repository, update the file footer with the current date.
+**CRITICAL DOCUMENTATION CONSTRAINTS**
 
-- Add or update the **Updated** field in the footer with today's date (YYYY-MM-DD format)
-- Increment the version number if making significant changes (optional for minor edits)
-- Example footer format: `**Version**: X.Y.Z | **Created**: YYYY-MM-DD | **Updated**: YYYY-MM-DD | **Source**: Description`
+These constraints are IMMUTABLE and apply to all files in this repository:
+
+1. **NEVER duplicate content**: Use cross-references, maintain Single Source of Truth
+2. **ALWAYS verify cross-references**: Run `scripts/verify-cross-references.sh` before committing
+3. **NEVER add version/line tracking**: Git handles versioning and change history
+4. **MUST maintain Single Source of Truth**: Each pattern documented in exactly ONE place
+5. **ALWAYS optimize for AI consumption**: Condense redundancy, use tables/lists, maximize signal-to-noise ratio
+
+Rationale: Every line added consumes context in every future AI session. Make it count.
+
+**Before Adding Content:**
+1. Does this exist elsewhere? → Cross-reference instead
+2. Is this universal or project-specific? → Universal only
+3. Will this be reused across sessions? → If not, don't add
+4. Can this be found in official docs? → Link instead
+5. Is this a pattern or one-off solution? → Only patterns belong here
 
 ### Quality Check
 
@@ -305,7 +339,3 @@ This structure follows:
 6. **Web Research Foundation**: AI patterns grounded in 2026 industry research
 
 **Result**: Comprehensive, non-redundant catalog of AI development patterns and practical workflows.
-
----
-
-**Version**: 2.1.0 | **Created**: 2026-01-20 | **Updated**: 2026-01-22 | **Source**: 2026 Web Research + Practical Workflows

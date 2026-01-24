@@ -332,6 +332,3 @@ Run independent reviews in parallel to:
 - [Ultimate Guide - The Best AI CI/CD Testing Automation Tools of 2026](https://www.testsprite.com/use-cases/en/the-top-ai-ci-cd-testing-automation-tools)
 - [Autonomous Quality Gates: AI-Powered Code Review](https://www.augmentcode.com/guides/autonomous-quality-gates-ai-powered-code-review)
 
----
-
-**Created**: 2026-01-20 | **Source**: Web research synthesis

@@ -444,8 +444,3 @@ allowedPrompts are automatically cleared when session ends. No manual cleanup ne
 - [quality-gates.md](quality-gates.md) - Permission system patterns
 - [agent-instruction-patterns.md](../templates/agent-instruction-patterns.md) - Agent autonomy rules
 
----
-
-**Version**: 1.0.0 | **Created**: 2026-01-16
-
-**Key Takeaway**: Allowed prompts are temporary, semantic permissions for plan execution. Use static permissions for common operations, allowed prompts for plan-specific needs, and scope both narrowly following security-conscious principles.
