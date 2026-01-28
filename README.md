@@ -44,6 +44,7 @@ Configuration files and permission systems.
 | [claude-permissions.md](configs/claude-permissions.md) | Permissions documentation, tiers, hooks system, installation, customization |
 | [claude-allowed-prompts.md](configs/claude-allowed-prompts.md) | Plan mode semantic permissions, intent-based matching, best practices |
 | [mcp-integration-patterns.md](configs/mcp-integration-patterns.md) | MCP usage patterns: scopes (user/local/project), Todoist, GitHub, Google Drive integrations |
+| [mcp-servers/service-integrations.md](configs/mcp-servers/service-integrations.md) | Detailed MCP service integration examples: Todoist, GitHub, Google Drive, Slack, Filesystem |
 | [tools.md](configs/tools.md) | Tool reference (Claude Code, rclone, pandoc, gh, jq) with installation patterns |
 | [claude-permissions-future-consideration.json](configs/claude-permissions-future-consideration.json) | Permission decisions and workflow rationale |
 
@@ -86,6 +87,8 @@ Reusable templates for agent instructions, component specs, and quick references
 | [agent-instruction-patterns.md](templates/agent-instruction-patterns.md) | Hub for 9 reusable agent instruction patterns: Supreme Constraints, Path Resolution, Evidence-Based, etc. |
 | [workflow-automation-pattern.md](templates/workflow-automation-pattern.md) | Hub for phase-based workflow patterns with entry/exit criteria and validation gates |
 | [frontend-component-spec.md](templates/frontend-component-spec.md) | Component specification template: user stories, API, state, accessibility, success criteria |
+| [patterns/constraints-and-boundaries.md](templates/patterns/constraints-and-boundaries.md) | Agent constraint patterns: Supreme Constraints, Path Resolution, Boundaries, Instruction Density, RFC 2119 markers |
+| [patterns/verification-and-output.md](templates/patterns/verification-and-output.md) | Agent verification patterns: Evidence-Based, Decision Tables, Autonomy Rules, Output Formatting, Progress Reporting |
 | [quick-reference/agent-definition.md](templates/quick-reference/agent-definition.md) | Quick fill-in template for defining AI agents |
 | [quick-reference/component-spec.md](templates/quick-reference/component-spec.md) | One-page component spec template |
 | [quick-reference/quality-gate.md](templates/quick-reference/quality-gate.md) | Quick template for validation scripts |
@@ -110,6 +113,15 @@ Step-by-step guides split from workflow files for progressive disclosure.
 |-----------|---------|
 | [scripting/](guides/scripting/) | Bash scripting guides: error handling, safe operations |
 | [automation/](guides/automation/) | Automation guides: phase-based workflows, technology examples |
+
+### Scripts (scripts/)
+
+Validation and verification scripts for maintaining repository quality.
+
+| File | Purpose |
+|------|---------|
+| [validate-structure.sh](scripts/validate-structure.sh) | Validates file lengths (<550 lines), checks for version footers, verifies section divider consistency |
+| [verify-cross-references.sh](scripts/verify-cross-references.sh) | Verifies all markdown cross-references point to existing files, reports broken links |
 
 ---
 
@@ -261,6 +273,17 @@ Before adding content to any memory file:
 
 ## Maintenance
 
+### CRITICAL: Keep Index Files Current
+
+**ALWAYS update README.md when making repository changes:**
+- Adding new files or directories → Update File Catalog section
+- Removing files → Remove from File Catalog
+- Reorganizing structure → Update File Relationships diagram
+- Adding new patterns → Update relevant section and cross-references
+- Changing file purposes → Update file descriptions
+
+**The README is the entry point for all AI sessions. Outdated README = wasted context and confusion.**
+
 ### Version Control
 
 - **Version all files** except sensitive configs (API keys, OAuth tokens in ~/.claude.json)
@@ -273,11 +296,12 @@ Before adding content to any memory file:
 
 These constraints are IMMUTABLE and apply to all files in this repository:
 
-1. **NEVER duplicate content**: Use cross-references, maintain Single Source of Truth
-2. **ALWAYS verify cross-references**: Run `scripts/verify-cross-references.sh` before committing
-3. **NEVER add version/line tracking**: Git handles versioning and change history
-4. **MUST maintain Single Source of Truth**: Each pattern documented in exactly ONE place
-5. **ALWAYS optimize for AI consumption**: Condense redundancy, use tables/lists, maximize signal-to-noise ratio
+1. **ALWAYS update README.md**: Any file/directory changes MUST be reflected in README File Catalog immediately
+2. **NEVER duplicate content**: Use cross-references, maintain Single Source of Truth
+3. **ALWAYS verify cross-references**: Run `scripts/verify-cross-references.sh` before committing
+4. **NEVER add version/line tracking**: Git handles versioning and change history
+5. **MUST maintain Single Source of Truth**: Each pattern documented in exactly ONE place
+6. **ALWAYS optimize for AI consumption**: Condense redundancy, use tables/lists, maximize signal-to-noise ratio
 
 Rationale: Every line added consumes context in every future AI session. Make it count.
 
