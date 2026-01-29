@@ -175,13 +175,15 @@ Specialized agents organized by function. These agents implement the patterns de
 **Code Review** (run in parallel, see [../workflows/code-review-patterns.md](../workflows/code-review-patterns.md)):
 - **security-reviewer**: OWASP Top 10, auth/authz, vulnerability scanning
 - **performance-reviewer**: Complexity, memory, database optimization
-- **maintainability-reviewer**: DRY/SOLID, complexity, organization
+- **maintainability-reviewer**: SOLID principles, complexity metrics, code organization
+- **code-duplication-detector**: DRY validation, identifies duplicated code patterns, suggests refactoring, detects copy-paste code
 - **accessibility-reviewer**: WCAG compliance, semantic HTML, ARIA
 - **style-reviewer**: Linting, formatting, type safety
 - **test-quality-reviewer**: Coverage, brittleness, edge cases
 
 **Documentation Quality**:
-- **documentation-reviewer**: Validates structure, DRY, cross-references (see [../instructions/documentation-reviewer-agent.md](../instructions/documentation-reviewer-agent.md))
+- **documentation-reviewer**: Validates structure, cross-references, quality standards (see [../instructions/documentation-reviewer-agent.md](../instructions/documentation-reviewer-agent.md))
+- **documentation-duplication-detector**: DRY validation, identifies duplicated content across files, enforces Single Source of Truth, suggests consolidation
 - **documentation-writer**: Creates/updates documentation
 - **documentation-indexer**: Maintains catalogs, detects drift
 - **example-validator**: Runs code examples, validates commands
@@ -200,6 +202,11 @@ Specialized agents organized by function. These agents implement the patterns de
 - **pr-generator**: Creates PRs with descriptions
 
 ### Specialized Domain Agents
+
+**AI Tooling** (specialized for AI configuration/documentation repos):
+- **ai-tooling-duplication-detector**: Detects duplication in instruction files, configs, patterns; validates DRY principles for AI context efficiency
+- **context-optimizer**: Analyzes AI context files for efficiency, suggests consolidation
+- **instruction-validator**: Validates instruction files follow architecture patterns
 
 **Security**:
 - **security-reviewer**: Comprehensive security validation
