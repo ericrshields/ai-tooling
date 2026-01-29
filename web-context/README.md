@@ -24,6 +24,7 @@ This directory contains synthesized findings from web research on AI development
 | [specification-driven-development.md](specification-driven-development.md) | 742 | **SDD methodology, GitHub Spec Kit, requirements engineering, living documentation** |
 | [tdd-development-workflows.md](tdd-development-workflows.md) | 386 | Test-driven development with AI, evals, chunked workflows |
 | [agent-architecture-patterns.md](agent-architecture-patterns.md) | 424 | Memory systems, self-correction, error recovery |
+| [ai-tooling-duplication-detection.md](ai-tooling-duplication-detection.md) | 421 | **Duplication detection in AI instruction files, DRY principles, modular prompts, 4-block structure, context optimization** |
 | [observability-hitl.md](observability-hitl.md) | 456 | Observability platforms, HITL patterns, regulatory context |
 
 ### Analysis
