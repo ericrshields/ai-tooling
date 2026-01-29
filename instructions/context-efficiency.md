@@ -6,18 +6,24 @@ Principles and practices for managing AI development configuration to maximize v
 
 ## Directory Structure
 
-**Conversation Context Directories** (loaded in AI conversations):
+**Repository Organization** (for organizing reusable content):
 - `configs/` - Tool setup, quality gates, permissions
 - `instructions/` - Development practices, patterns, coding principles
 - `templates/` - Reusable templates and quick references
 - `workflows/` - Step-by-step processes and command references
 
-**Non-Context Directories** (repository documentation, not for conversation context):
+**Non-Context Directories** (repository documentation only):
 - `web-context/` - Industry research and reference material for updating this repository
 - `.global/` - System configuration
 - `.claude/` - Claude Code system files
 
-**Important**: When counting lines, checking for duplicates, or maintaining context efficiency, **exclude web-context/** as it contains research material for humans updating the repository, not for AI conversation context.
+**Important**: These directories organize content but are NOT automatically loaded by Claude Code. To make content available in conversations:
+- **Option 1**: Place in `~/.claude/CLAUDE.md` (user-wide) or `./CLAUDE.md` (project-specific)
+- **Option 2**: Place in `~/.claude/rules/*.md` (auto-loads all .md files)
+- **Option 3**: Use SessionStart hooks in settings.local.json to load specific files
+- **Option 4**: Import via CLAUDE.md using `@filepath` syntax
+
+When counting lines for context efficiency, **exclude web-context/** as it's reference material for humans, not AI context.
 
 ---
 

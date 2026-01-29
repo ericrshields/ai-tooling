@@ -11,7 +11,8 @@
 ### New Machine Setup
 1. Review [configs/tools.md](configs/tools.md) - Install required tools
 2. Apply [configs/claude-permissions.json](configs/claude-permissions.json) - Set up permissions (see [claude-permissions.md](configs/claude-permissions.md))
-3. Read [instructions/claude-code-memory.md](instructions/claude-code-memory.md) - Configure preferences
+3. Read [configs/claude-code-auto-loading.md](configs/claude-code-auto-loading.md) - Configure auto-loading (CLAUDE.md, rules/, hooks)
+4. Read [instructions/claude-code-memory.md](instructions/claude-code-memory.md) - Configure preferences
 
 ### Understanding AI Architecture
 1. Review [instructions/multi-agent-orchestration.md](instructions/multi-agent-orchestration.md) - Framework comparison
@@ -49,6 +50,7 @@ Configuration files and permission systems.
 | [claude-permissions.json](configs/claude-permissions.json) | 3-tier permissions with hooks: allow (auto), ask (approve), deny (blocked) |
 | [claude-permissions.md](configs/claude-permissions.md) | Permissions documentation, tiers, hooks system, installation, customization |
 | [claude-allowed-prompts.md](configs/claude-allowed-prompts.md) | Plan mode semantic permissions, intent-based matching, best practices |
+| [claude-code-auto-loading.md](configs/claude-code-auto-loading.md) | **Auto-loading mechanisms**: CLAUDE.md files, rules/ directory, SessionStart hooks, migration guide, troubleshooting |
 | [mcp-integration-patterns.md](configs/mcp-integration-patterns.md) | MCP usage patterns: scopes (user/local/project), Todoist, GitHub, Google Drive integrations |
 | [mcp-servers/service-integrations.md](configs/mcp-servers/service-integrations.md) | Detailed MCP service integration examples: Todoist, GitHub, Google Drive, Slack, Filesystem |
 | [tools.md](configs/tools.md) | Tool reference (Claude Code, rclone, pandoc, gh, jq) with installation patterns |

@@ -8,19 +8,26 @@ Practical guidance for effective use of Claude Code CLI, including context manag
 
 ### Understanding Context Types
 
-Claude Code maintains two separate context systems:
+Claude Code maintains three separate context systems:
 
-**1. Instructions (`.claude/instructions/`)** - Static Configuration
+**1. Memory Files** - Static Auto-Loaded Context
+- **CLAUDE.md files**: User (`~/.claude/CLAUDE.md`) and project-level (`./CLAUDE.md`, `./.claude/CLAUDE.md`)
+- **Rules directory**: All `.md` files in `~/.claude/rules/` and `./.claude/rules/`
+- **SessionStart hooks**: Custom commands in `settings.local.json` that run at session start
 - Automatically loaded at conversation start
 - Project/user-wide guidelines and patterns
-- Managed via file editing (not visible in `/memory`)
-- Examples: coding standards, workflow patterns, permissions
+- Examples: coding standards, workflow patterns, interaction preferences
 
-**2. Memory System** - Dynamic Learning
+**2. Dynamic Memory System** - Learned Context
 - Facts learned about you and your preferences during sessions
 - Persists across conversation restarts (unless `/clear` is used)
 - Visible via `/memory` command
 - Examples: "prefers TypeScript", "working on Grafana OSS", "uses TDD"
+
+**3. Custom Directories** - Manual Reference Only
+- Directories like `.claude/instructions/` or custom folders are NOT auto-loaded
+- Must be loaded via SessionStart hooks or CLAUDE.md imports
+- Useful for organizing content that you selectively load
 
 ### Conversation Management Commands
 
@@ -121,9 +128,13 @@ See [../configs/claude-permissions.md](../configs/claude-permissions.md) for com
 
 ## File and Directory Structure
 
-### Instructions Directory
+### Memory Files and Rules
 
-**Location**: `.claude/instructions/`
+**Auto-Loaded Locations**:
+- `~/.claude/CLAUDE.md` - User-wide memory file
+- `./CLAUDE.md` or `./.claude/CLAUDE.md` - Project-specific memory file
+- `~/.claude/rules/*.md` - User-wide rules (all .md files loaded)
+- `./.claude/rules/*.md` - Project-specific rules (all .md files loaded)
 
 **Purpose**: Automatically loaded into every conversation as static context
 
@@ -133,7 +144,24 @@ See [../configs/claude-permissions.md](../configs/claude-permissions.md) for com
 - Interaction preferences
 - Development standards
 
-**Management**: Manual file editing, synced via configuration repos
+**SessionStart Hooks**: For critical files that must load first
+```json
+{
+  "hooks": {
+    "SessionStart": [{
+      "hooks": [{
+        "type": "command",
+        "command": "cat ~/.claude/critical-file.md"
+      }]
+    }]
+  }
+}
+```
+
+**Custom Directories** (e.g., `.claude/instructions/`):
+- NOT auto-loaded by Claude Code
+- Must use SessionStart hooks or CLAUDE.md imports to load
+- Useful for organizing content, but requires explicit loading mechanism
 
 ### Settings Files
 
@@ -256,12 +284,14 @@ Use hub-and-spoke configuration repos:
 - Sync to `~/.claude/` (user-wide) and `<project>/.claude/` (project-local)
 - See `~/.ai-context-store/` for pattern
 
-### Instruction Files
+### Memory and Rules Files
 
-Keep `.claude/instructions/` focused:
+Keep CLAUDE.md and rules/ files focused:
 - Universal patterns only
 - Cross-reference instead of duplicate
 - Every line costs tokens in every session
+- Use SessionStart hooks for files that must load before rules
+- Organize complex content in custom directories, load via hooks
 
 ### Permission Testing
 
