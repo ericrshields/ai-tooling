@@ -12,8 +12,8 @@ Claude Code maintains three separate context systems:
 
 **1. Memory Files** - Static Auto-Loaded Context
 - **CLAUDE.md files**: User (`~/.claude/CLAUDE.md`) and project-level (`./CLAUDE.md`, `./.claude/CLAUDE.md`)
-- **Rules directory**: All `.md` files in `~/.claude/rules/` and `./.claude/rules/`
-- **SessionStart hooks**: Custom commands in `settings.local.json` that run at session start
+- **Rules directory**: All `.md` files in `~/.claude/rules/` and `./.claude/rules/` (RECOMMENDED)
+- **SessionStart hooks**: ⚠️ **BROKEN for new conversations** (GitHub Issue #10373) - use rules/ instead
 - Automatically loaded at conversation start
 - Project/user-wide guidelines and patterns
 - Examples: coding standards, workflow patterns, interaction preferences
@@ -26,8 +26,8 @@ Claude Code maintains three separate context systems:
 
 **3. Custom Directories** - Manual Reference Only
 - Directories like `.claude/instructions/` or custom folders are NOT auto-loaded
-- Must be loaded via SessionStart hooks or CLAUDE.md imports
-- Useful for organizing content that you selectively load
+- Must be loaded via CLAUDE.md imports (SessionStart hooks broken for new conversations)
+- Better alternative: Use rules/ directory for reliable auto-loading
 
 ### Conversation Management Commands
 
@@ -144,24 +144,23 @@ See [../configs/claude-permissions.md](../configs/claude-permissions.md) for com
 - Interaction preferences
 - Development standards
 
-**SessionStart Hooks**: For critical files that must load first
-```json
-{
-  "hooks": {
-    "SessionStart": [{
-      "hooks": [{
-        "type": "command",
-        "command": "cat ~/.claude/critical-file.md"
-      }]
-    }]
-  }
-}
+**Rules Directory Ordering**: For files that must load first
+```bash
+# Use 00- prefix for priority loading (alphabetical order)
+~/.claude/rules/00-constitution.md  # Loads first
+~/.claude/rules/interaction-patterns.md
+~/.claude/rules/task-management.md
 ```
+
+**SessionStart Hooks** (⚠️ BROKEN):
+- GitHub Issue #10373: Don't inject context for new conversations
+- Only work for `/clear`, `/compact`, and resume operations
+- **Recommendation**: Use rules/ directory instead
 
 **Custom Directories** (e.g., `.claude/instructions/`):
 - NOT auto-loaded by Claude Code
-- Must use SessionStart hooks or CLAUDE.md imports to load
-- Useful for organizing content, but requires explicit loading mechanism
+- Must use CLAUDE.md imports to load (SessionStart hooks broken)
+- Better alternative: Move to rules/ directory
 
 ### Settings Files
 
@@ -290,8 +289,8 @@ Keep CLAUDE.md and rules/ files focused:
 - Universal patterns only
 - Cross-reference instead of duplicate
 - Every line costs tokens in every session
-- Use SessionStart hooks for files that must load before rules
-- Organize complex content in custom directories, load via hooks
+- Use `00-` prefix in rules/ for files that must load first (alphabetical ordering)
+- Avoid custom directories - use rules/ for reliable auto-loading
 
 ### Permission Testing
 

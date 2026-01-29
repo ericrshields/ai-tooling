@@ -19,8 +19,8 @@ Principles and practices for managing AI development configuration to maximize v
 
 **Important**: These directories organize content but are NOT automatically loaded by Claude Code. To make content available in conversations:
 - **Option 1**: Place in `~/.claude/CLAUDE.md` (user-wide) or `./CLAUDE.md` (project-specific)
-- **Option 2**: Place in `~/.claude/rules/*.md` (auto-loads all .md files)
-- **Option 3**: Use SessionStart hooks in settings.local.json to load specific files
+- **Option 2** (RECOMMENDED): Place in `~/.claude/rules/*.md` (auto-loads all .md files reliably)
+- **Option 3**: Use SessionStart hooks in settings.local.json - ⚠️ **BROKEN** (GitHub Issue #10373, January 2026)
 - **Option 4**: Import via CLAUDE.md using `@filepath` syntax
 
 When counting lines for context efficiency, **exclude web-context/** as it's reference material for humans, not AI context.

@@ -107,10 +107,21 @@ Claude Code has **specific, built-in mechanisms** for auto-loading context. Cust
 }
 ```
 
-**When to Use**:
-- Loading project constitutions that must be read first
-- Custom directory structures (e.g., `.claude/instructions/`)
-- Checking for and loading project-specific specs
+**Status**: ⚠️ **BROKEN for new conversations** (GitHub Issue #10373, January 2026)
+
+**Known Bug**: SessionStart hooks execute successfully but their output is **never injected into context** for brand new conversations. Hooks work correctly for `/clear`, `/compact`, and resume operations, but silently fail for new sessions.
+
+**Recommendation**: **Use rules/ directory instead** for static content.
+
+**Workarounds** (until bug is fixed):
+1. **Use rules/ directory** - Move static files to `~/.claude/rules/*.md` (auto-loads reliably)
+2. **Manual `/clear`** - Run `/clear` at session start to force hooks to fire
+3. **UserPromptSubmit hooks** - Work correctly but wasteful (inject on EVERY prompt)
+
+**When to Use** (once bug is fixed):
+- Dynamic content generation (git status, recent commits)
+- Conditional loading (check if file exists, load if present)
+- Content that changes between sessions
 
 ---
 
@@ -166,7 +177,18 @@ These are **NOT automatically loaded**:
 
 **Problem**: Need project constitution to load before everything else
 
-**Solution**: SessionStart hook
+**Solution**: Use rules/ directory with `00-` prefix
+```bash
+~/.claude/rules/00-project-constitution.md
+```
+
+**Why**:
+- Loads reliably (SessionStart hooks broken for new conversations)
+- Files load alphabetically, so `00-` prefix ensures it loads first
+- Zero context duplication
+- No hook complexity
+
+**Alternative** (once SessionStart bug is fixed):
 ```json
 {
   "hooks": {
@@ -179,8 +201,6 @@ These are **NOT automatically loaded**:
   }
 }
 ```
-
-**Why**: Ensures constitution principles are in context before rules load
 
 ### Pattern 2: Modular Rules
 
@@ -218,23 +238,26 @@ These are **NOT automatically loaded**:
 
 **Why**: Checks for file existence, loads if present, continues if not
 
-### Pattern 4: Hybrid Approach
+### Pattern 4: All-Rules Approach (RECOMMENDED)
 
-**Problem**: One critical file + many modular files
+**Problem**: Multiple instruction files, all should auto-load reliably
 
-**Solution**: SessionStart hook + Rules directory
+**Solution**: Rules directory only (no hooks needed)
 ```
-~/.claude/
-├── settings.local.json (SessionStart hook for constitution)
-├── instructions/
-│   └── 00-project-constitution.md (loaded via hook)
-└── rules/
-    ├── interaction-patterns.md (auto-loaded)
-    ├── context-management.md (auto-loaded)
-    └── task-management.md (auto-loaded)
+~/.claude/rules/
+├── 00-project-constitution.md (loads first alphabetically)
+├── interaction-patterns.md (auto-loaded)
+├── context-management.md (auto-loaded)
+├── task-management.md (auto-loaded)
+└── planning-workflow.md (auto-loaded)
 ```
 
-**Why**: Best of both worlds - critical file loads first, others auto-load
+**Why**:
+- No dependency on broken SessionStart hooks
+- All files auto-load reliably
+- `00-` prefix ensures constitution loads first
+- Zero configuration needed
+- Simple, maintainable structure
 
 ---
 
@@ -309,6 +332,22 @@ mv ~/.claude/instructions/*.md ~/.claude/rules/
 cat ~/.claude/CLAUDE.md ~/.claude/rules/*.md | wc -l
 ```
 
+**UserPromptSubmit Hook Efficiency Warning**:
+
+If you inject the same file on every prompt using UserPromptSubmit hooks, context accumulates **quadratically**:
+
+| Turn | Tokens Used | Waste |
+|------|-------------|-------|
+| 1    | 170         | 0     |
+| 2    | 340         | 170   |
+| 3    | 510         | 340   |
+| 10   | 1,700       | 1,530 |
+| 50   | 8,500       | 8,330 |
+
+**Why**: Conversation history includes all previous turns, so the same content appears multiple times in context.
+
+**Solution**: Use rules/ directory for static content (loaded once, available always, zero duplication)
+
 ### Testing
 
 **Verify auto-loading works**:
@@ -339,12 +378,16 @@ cat ~/.claude/CLAUDE.md ~/.claude/rules/*.md | wc -l
 
 **Symptom**: Hook command in settings.json but no output
 
-**Cause**:
-- JSON syntax error
-- File path doesn't exist
-- Command fails silently
+**Causes**:
+1. **Known Bug (Issue #10373)**: SessionStart hooks don't inject context for new conversations (only work for `/clear`, `/compact`, resume)
+2. JSON syntax error in settings file
+3. File path doesn't exist
+4. Command fails silently
 
-**Debug**:
+**Solutions**:
+1. **Best**: Move content to `~/.claude/rules/*.md` (bypasses hook entirely)
+2. **Temporary**: Run `/clear` at session start to trigger hooks
+3. **Debug**: Add echo statement to verify execution:
 ```json
 {
   "hooks": {
@@ -357,6 +400,9 @@ cat ~/.claude/CLAUDE.md ~/.claude/rules/*.md | wc -l
   }
 }
 ```
+
+**References**:
+- [GitHub Issue #10373](https://github.com/anthropics/claude-code/issues/10373) - Root cause identified with proposed fix
 
 ### Context Overload
 
