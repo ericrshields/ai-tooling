@@ -12,19 +12,7 @@
 
 These values define the repository's identity and guide all decisions:
 
-### 1. Context Efficiency
-
-**Principle**: Every line must justify its context cost.
-
-**Rationale**: Memory files are loaded in every AI session. Wasted tokens reduce capacity for actual work.
-
-**Application**:
-- Maximize signal-to-noise ratio
-- Use tables for structured data
-- Avoid verbose explanations
-- Cross-reference instead of duplicate
-
-### 2. Single Source of Truth (SSoT)
+### 1. Single Source of Truth (SSoT)
 
 **Principle**: Each concept documented in exactly ONE authoritative location.
 
@@ -36,7 +24,7 @@ These values define the repository's identity and guide all decisions:
 - Hub-and-spoke architecture (README → detail files)
 - Never copy-paste between files
 
-### 3. AI-First Design
+### 2. AI-First Design
 
 **Principle**: Optimize for AI consumption, not human browsing.
 
@@ -48,7 +36,7 @@ These values define the repository's identity and guide all decisions:
 - Explicit cross-references with file paths
 - Progressive disclosure (summary → details)
 
-### 4. Evidence-Based
+### 3. Evidence-Based
 
 **Principle**: Require proof, prevent assumptions.
 
@@ -60,7 +48,7 @@ These values define the repository's identity and guide all decisions:
 - Run validation scripts before committing
 - Document sources for research content
 
-### 5. Progressive Disclosure
+### 4. Progressive Disclosure
 
 **Principle**: Summary first, details on demand.
 
@@ -83,16 +71,16 @@ These constraints are ABSOLUTE and NEVER negotiable:
 1. **NEVER duplicate content**: Use cross-references to maintain Single Source of Truth
 2. **ALWAYS update README.md**: File Catalog must reflect current repository state
 3. **ALWAYS verify cross-references**: Run `scripts/verify-cross-references.sh` before committing
-4. **NEVER exceed 550 lines per file**: Split large files using hub-and-spoke pattern
-5. **NEVER add version footers**: Git handles versioning and change history
-6. **NEVER add line number tracking**: Use git blame for change attribution
+4. **NEVER add version footers**: Git handles versioning and change history
+5. **NEVER add line number tracking**: Use git blame for change attribution
 
 ### Quality Constraints
 
-7. **ALWAYS run validation scripts**: Both structure and cross-reference validation must pass
-8. **ALWAYS use 3-hyphen section dividers**: Standard is `---`, not 4+ hyphens
-9. **ALWAYS document in markdown**: No proprietary formats, ensure longevity
-10. **ALWAYS include Related Documentation**: Every file links to related content
+6. **ALWAYS run validation scripts**: Both structure and cross-reference validation must pass
+7. **ALWAYS use 3-hyphen section dividers**: Standard is `---`, not 4+ hyphens
+8. **ALWAYS document in markdown**: No proprietary formats, ensure longevity
+9. **ALWAYS include Related Documentation**: Every file links to related content
+10. **NEVER exceed 550 lines per file**: Split large files using hub-and-spoke pattern (ensures focused, maintainable documentation)
 
 ### Architectural Constraints
 
@@ -119,7 +107,7 @@ Non-negotiable standards that must be met:
 - **Validation scripts pass**: `validate-structure.sh` and `verify-cross-references.sh` both exit 0
 - **Catalog completeness**: All files/directories documented in README
 - **Single Source of Truth**: No duplicated content across files
-- **Context efficiency**: High signal-to-noise ratio
+- **Clarity**: Well-structured, scannable documentation
 
 ### Code Examples
 
@@ -308,6 +296,8 @@ This repository succeeds when:
 - Find missing cross-references → add them
 - Detect documentation drift → update
 - Measure against success criteria → adjust
+- Check cross-reference summary vs. detail → adjust summary
+- Identify opportunities to improve this repo → suggest to user
 
 ---
 
