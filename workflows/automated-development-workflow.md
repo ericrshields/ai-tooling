@@ -228,6 +228,145 @@ Each phase will require:
 
 ---
 
+## SPECIALIZED AGENTS FOR WORKFLOW
+
+Each phase could be implemented by specialized agents working in coordination:
+
+### Phase 1 Agents: Analysis & Planning
+
+**context-analyzer**:
+- Deep code analysis: patterns, architecture, dependencies
+- Impact analysis: related paths, affected components
+- Generates comprehensive context for planning
+
+**test-planner** (TDD):
+- Analyzes existing test coverage
+- Designs test strategy before implementation
+- Identifies unit, integration, edge case, and regression test needs
+
+**plan-generator**:
+- Creates detailed implementation plan from requirements
+- Sequences changes, identifies rollback strategies
+- Uses [plan-reviewer-agent](../instructions/plan-reviewer-agent.md) for validation
+
+### Phase 2 Agents: Implementation
+
+**code-writer**:
+- Implements changes following approved plan
+- Follows existing patterns and conventions
+- Maintains backward compatibility
+
+**test-writer**:
+- Writes tests from test plan (TDD)
+- Creates unit, integration, and edge case tests
+- Validates test quality and coverage
+
+### Phase 3 Agents: Multi-Dimensional Review
+
+Run in parallel for 5-6x speedup (see [code-review-patterns.md](code-review-patterns.md)):
+
+**security-reviewer**:
+- OWASP Top 10 validation
+- Auth/authz, input validation, secrets detection
+- Vulnerability scanning
+
+**performance-reviewer**:
+- Algorithmic complexity analysis
+- Memory usage, database query optimization
+- Identifies performance regressions
+
+**maintainability-reviewer**:
+- Code complexity, DRY/SOLID adherence
+- Naming, organization, documentation quality
+- Technical debt assessment
+
+**accessibility-reviewer**:
+- WCAG compliance (UI code)
+- Semantic HTML, ARIA, keyboard navigation
+- Screen reader compatibility
+
+**style-reviewer**:
+- Linting, formatting, type safety
+- Documentation completeness
+- Coding standards adherence
+
+**test-quality-reviewer**:
+- Test coverage metrics
+- Test brittleness detection
+- Test maintainability assessment
+
+**documentation-reviewer**:
+- Uses [documentation-reviewer-agent](../instructions/documentation-reviewer-agent.md)
+- Validates doc updates for code changes
+- Ensures examples and references are current
+
+### Phase 4 Agents: Iteration
+
+**review-synthesizer**:
+- Collects parallel review findings
+- Prioritizes issues (blocking vs. nice-to-have)
+- Creates consolidated fix plan
+
+**code-refiner**:
+- Addresses review findings
+- Re-runs affected reviews
+- Validates fixes meet requirements
+
+**test-runner**:
+- Executes full test suite
+- Analyzes failures, suggests fixes
+- Validates green build
+
+### Phase 5 Agents: Commit & PR
+
+**commit-writer**:
+- Stages changes strategically
+- Generates clear commit messages
+- Follows repository conventions
+
+**pr-generator**:
+- Creates PR following template
+- Generates description from commits/plan
+- Adds implementation context and rationale
+
+### Phase 6 Agents: CI/CD
+
+**ci-monitor**:
+- Tracks CI pipeline progress
+- Analyzes failure logs
+- Suggests fixes for CI failures
+
+**integration-validator**:
+- Ensures all tests pass
+- Validates deployment readiness
+- Manages fix-and-retry cycle
+
+### Phase 7 Agents: Collaboration
+
+**feedback-processor**:
+- Monitors PR for team feedback
+- Categorizes comments (question/suggestion/required)
+- Routes to appropriate handler
+
+**response-writer**:
+- Generates clarifying responses
+- Evaluates suggestions
+- Coordinates change implementation
+
+### Orchestration Agents
+
+**workflow-orchestrator**:
+- Coordinates agent execution across phases
+- Manages state transitions
+- Handles errors and retries
+
+**progress-reporter**:
+- Provides visibility into workflow status
+- Reports completion percentages
+- Alerts on blockers or failures
+
+---
+
 ## References
 
 - [quality-gates.md](../configs/quality-gates.md) - Quality gate patterns

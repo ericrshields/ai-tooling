@@ -152,6 +152,79 @@ Use the standard approach for this.
 
 ---
 
+## COMMON AGENT TYPES
+
+Specialized agents organized by function. These agents implement the patterns defined in this document.
+
+### Development Lifecycle Agents
+
+**Analysis & Planning**:
+- **context-analyzer**: Deep code analysis, architecture understanding, impact assessment
+- **test-planner**: TDD test strategy, coverage analysis
+- **plan-generator**: Creates implementation plans from requirements
+- **plan-reviewer**: Validates plans for accuracy, efficiency, completeness (see [../instructions/plan-reviewer-agent.md](../instructions/plan-reviewer-agent.md))
+
+**Implementation**:
+- **code-writer**: Implements changes following patterns
+- **test-writer**: Writes unit, integration, edge case tests
+- **refactorer**: Improves code structure without changing behavior
+- **migration-agent**: Handles version upgrades, framework migrations
+
+### Review & Quality Agents
+
+**Code Review** (run in parallel, see [../workflows/code-review-patterns.md](../workflows/code-review-patterns.md)):
+- **security-reviewer**: OWASP Top 10, auth/authz, vulnerability scanning
+- **performance-reviewer**: Complexity, memory, database optimization
+- **maintainability-reviewer**: DRY/SOLID, complexity, organization
+- **accessibility-reviewer**: WCAG compliance, semantic HTML, ARIA
+- **style-reviewer**: Linting, formatting, type safety
+- **test-quality-reviewer**: Coverage, brittleness, edge cases
+
+**Documentation Quality**:
+- **documentation-reviewer**: Validates structure, DRY, cross-references (see [../instructions/documentation-reviewer-agent.md](../instructions/documentation-reviewer-agent.md))
+- **documentation-writer**: Creates/updates documentation
+- **documentation-indexer**: Maintains catalogs, detects drift
+- **example-validator**: Runs code examples, validates commands
+
+### Synthesis & Integration Agents
+
+**Coordination**:
+- **review-synthesizer**: Collects parallel findings, prioritizes, deduplicates
+- **workflow-orchestrator**: Coordinates multi-agent workflows, manages state
+- **progress-reporter**: Provides visibility, reports status
+
+**CI/CD Integration**:
+- **ci-reviewer**: Integrates reviews into pipelines
+- **ci-monitor**: Tracks pipeline progress, analyzes failures
+- **test-runner**: Executes tests, suggests fixes
+- **pr-generator**: Creates PRs with descriptions
+
+### Specialized Domain Agents
+
+**Security**:
+- **security-reviewer**: Comprehensive security validation
+- **threat-modeler**: Identifies attack vectors, risks
+- **secrets-scanner**: Detects hardcoded credentials
+
+**Performance**:
+- **performance-reviewer**: Comprehensive performance analysis
+- **load-tester**: Simulates traffic, identifies bottlenecks
+- **profiler-analyzer**: Interprets profiling data
+
+**Architecture**:
+- **architecture-validator**: Deep architectural review
+- **dependency-analyzer**: Analyzes dependencies, suggests updates
+- **technical-debt-tracker**: Identifies and prioritizes tech debt
+
+### Meta Agents
+
+**Quality & Learning**:
+- **reviewer-quality-checker**: Validates review outputs, detects false positives
+- **ai-on-ai-reviewer**: Reviews AI-generated code with different model
+- **pattern-learner**: Extracts patterns from successful implementations
+
+---
+
 **Related Documentation**:
 - [patterns/constraints-and-boundaries.md](patterns/constraints-and-boundaries.md) - Constraints, path resolution, boundaries, instruction density
 - [patterns/verification-and-output.md](patterns/verification-and-output.md) - Evidence, decision tables, autonomy, output, progress
