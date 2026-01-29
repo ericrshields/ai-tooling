@@ -47,6 +47,7 @@ These values define the repository's identity and guide all decisions:
 - Verify paths exist before referencing
 - Run validation scripts before committing
 - Document sources for research content
+- **Search the web for context when potentially useful**: Use WebSearch to gather current information about technologies, frameworks, APIs, or approaches when training data may be outdated or incomplete
 
 ### 4. Progressive Disclosure
 

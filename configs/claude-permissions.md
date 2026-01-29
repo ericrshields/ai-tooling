@@ -308,6 +308,27 @@ Claude Code supports multiple path pattern types for scoping file operations lik
 
 **Important**: A single slash path like `/Users/alice/file` is NOT absolute—it's relative to your settings file location. Use double slashes `//Users/alice/file` for true absolute paths.
 
+**CRITICAL: Working Directory Context**
+
+Claude Code uses **different working directories** for different operations:
+
+1. **Normal Execution** (tools, commands, file operations):
+   - **PWD = Project Root** (e.g., `~/.ai`)
+   - `Read(.specs/constitution.md)` resolves from project root
+   - `pwd` returns project directory
+   - Relative paths in commands resolve from project root
+
+2. **Permission Pattern Matching** (evaluating settings.local.json):
+   - **PWD = Settings File Location** (e.g., `~/.claude/` or `~/.ai/.claude/`)
+   - Pattern `Write(/**/*)` in `~/.claude/settings.local.json` matches `~/.claude/**/*`
+   - Pattern `Write(/**/*)` in `~/.ai/.claude/settings.local.json` matches `~/.ai/**/*`
+   - Leading `/` means "relative to settings file directory"
+
+**Example**:
+- Your project is at `~/.ai` with settings at `~/.ai/.claude/settings.local.json`
+- Permission pattern: `Write(/**/*.md)` → matches `~/.ai/**/*.md` (from settings location)
+- File operation: `Write(docs/file.md)` → writes to `~/.ai/docs/file.md` (from project root)
+
 **Wildcard Support** (gitignore specification):
 - `*` matches files in a **single directory** only
 - `**` matches **recursively across directories**
