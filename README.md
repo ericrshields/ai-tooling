@@ -2,8 +2,6 @@
 
 **Purpose**: Hub-and-spoke entry point for AI-assisted development patterns, workflows, and configurations.
 
-**Total Lines**: ~10,300 lines (conversation context) + 3,400 lines (web-context research for repository maintenance)
-
 ---
 
 ## Quick Start
