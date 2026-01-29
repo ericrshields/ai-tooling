@@ -32,9 +32,15 @@
 
 ## File Catalog
 
-### Configs (configs/)
+### Specifications (.specs/)
 
-Configuration files and permission systems.
+Repository governance and principles (follows Spec-Driven Development pattern).
+
+| File | Purpose |
+|------|---------|
+| [constitution.md](.specs/constitution.md) | **Repository Constitution**: Immutable principles, core values, quality thresholds, decision hierarchy, architectural principles |
+
+### Configs (configs/)
 
 Configuration files and permission systems.
 
@@ -144,6 +150,7 @@ README.md (YOU ARE HERE)
     │       └─→ instructions/self-correction-patterns.md (HITL integration)
     │
     ├── Core Principles
+    │   ├─→ .specs/constitution.md (repository governance)
     │   ├─→ instructions/coding-principles.md (universal principles)
     │   ├─→ instructions/development-practices.md (daily practices)
     │   └─→ instructions/context-efficiency.md (documentation patterns)
@@ -306,6 +313,8 @@ These constraints are IMMUTABLE and apply to all files in this repository:
 6. **ALWAYS optimize for AI consumption**: Condense redundancy, use tables/lists, maximize signal-to-noise ratio
 
 Rationale: Every line added consumes context in every future AI session. Make it count.
+
+**See [.specs/constitution.md](.specs/constitution.md) for complete governance principles and decision hierarchy.**
 
 **Before Adding Content:**
 1. Does this exist elsewhere? → Cross-reference instead
