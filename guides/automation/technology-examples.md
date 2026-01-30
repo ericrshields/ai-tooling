@@ -314,4 +314,4 @@ Follow [../../workflows/script-patterns.md](../../workflows/script-patterns.md):
 - [phase-based-workflows.md](phase-based-workflows.md) - Workflow structure and patterns
 - [../../templates/workflow-automation-pattern.md](../../templates/workflow-automation-pattern.md) - Workflow hub
 - [../../workflows/script-patterns.md](../../workflows/script-patterns.md) - Script automation patterns
-- [../../instructions/coding-principles.md](../../instructions/coding-principles.md) - Testing strategies
+- [../../rules/coding-principles.md](../../rules/coding-principles.md) - Testing strategies

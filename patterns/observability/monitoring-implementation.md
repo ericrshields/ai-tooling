@@ -252,5 +252,5 @@ Production AI systems require continuous monitoring to ensure reliability, perfo
 **Related Documentation**:
 - [hitl-patterns.md](hitl-patterns.md) - Human-in-the-loop integration
 - [challenges-solutions.md](challenges-solutions.md) - Common problems and solutions
-- [../../instructions/observability-patterns.md](../../instructions/observability-patterns.md) - Observability hub
-- [../../instructions/self-correction-patterns.md](../../instructions/self-correction-patterns.md) - Error recovery
+- [../../rules/observability-patterns.md](../../rules/observability-patterns.md) - Observability hub
+- [../../rules/self-correction-patterns.md](../../rules/self-correction-patterns.md) - Error recovery

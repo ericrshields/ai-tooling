@@ -25,7 +25,7 @@ Claude Code maintains three separate context systems:
 - Examples: "prefers TypeScript", "working on Grafana OSS", "uses TDD"
 
 **3. Custom Directories** - Manual Reference Only
-- Directories like `.claude/instructions/` or custom folders are NOT auto-loaded
+- Directories like `.claude/rules/` or custom folders are NOT auto-loaded
 - Must be loaded via CLAUDE.md imports (SessionStart hooks broken for new conversations)
 - Better alternative: Use rules/ directory for reliable auto-loading
 
@@ -157,7 +157,7 @@ See [../configs/claude-permissions.md](../configs/claude-permissions.md) for com
 - Only work for `/clear`, `/compact`, and resume operations
 - **Recommendation**: Use rules/ directory instead
 
-**Custom Directories** (e.g., `.claude/instructions/`):
+**Custom Directories** (e.g., `.claude/rules/`):
 - NOT auto-loaded by Claude Code
 - Must use CLAUDE.md imports to load (SessionStart hooks broken)
 - Better alternative: Move to rules/ directory
@@ -348,7 +348,7 @@ Test new permissions safely:
 
 - [../configs/claude-permissions.md](../configs/claude-permissions.md) - Complete permissions documentation
 - [../configs/mcp-integration-patterns.md](../configs/mcp-integration-patterns.md) - MCP server configuration
-- [../instructions/claude-code-memory.md](../instructions/claude-code-memory.md) - User preferences and personality
-- [../instructions/context-efficiency.md](../instructions/context-efficiency.md) - Documentation patterns
+- [../rules/claude-code-memory.md](../rules/claude-code-memory.md) - User preferences and personality
+- [../rules/context-efficiency.md](../rules/context-efficiency.md) - Documentation patterns
 - [./one-liners.md](./one-liners.md) - Command reference
 

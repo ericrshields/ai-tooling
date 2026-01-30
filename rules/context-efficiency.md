@@ -8,7 +8,7 @@ Principles and practices for managing AI development configuration to maximize v
 
 **Repository Organization** (for organizing reusable content):
 - `configs/` - Tool setup, quality gates, permissions
-- `instructions/` - Development practices, patterns, coding principles
+- `rules/` - Development practices, patterns, coding principles
 - `templates/` - Reusable templates and quick references
 - `workflows/` - Step-by-step processes and command references
 
@@ -50,7 +50,7 @@ When counting lines for context efficiency, **exclude web-context/** as it's ref
 **Pattern**:
 ```
 ❌ BAD: Information repeated in multiple files
-instructions/claude-code-memory.md:
+rules/claude-code-memory.md:
   - Tool installation: npm, rclone, pandoc
   - Tool configs: ~/.config/rclone/rclone.conf
 
@@ -63,14 +63,14 @@ configs/tools.md:
   - Tool installation: npm, rclone, pandoc
   - Tool configs: ~/.config/rclone/rclone.conf
 
-instructions/claude-code-memory.md:
+rules/claude-code-memory.md:
   - See configs/tools.md for tool setup
 ```
 
 **How to Identify SPoT Violations**:
 ```bash
 # Find potential duplicates (search conversation context only)
-grep -r "same phrase" configs/ instructions/ templates/ workflows/
+grep -r "same phrase" configs/ rules/ templates/ workflows/
 # If found in multiple files, consolidate to one
 ```
 
@@ -191,7 +191,7 @@ or when users provide invalid input, or when... [continues for 20 lines]
 ### 1. Does This Already Exist?
 ```bash
 # Search existing files (exclude web-context research directory)
-grep -r "concept or phrase" instructions/ configs/ workflows/ templates/
+grep -r "concept or phrase" rules/ configs/ workflows/ templates/
 ```
 
 - [ ] If found: Reference it instead of duplicating
@@ -242,15 +242,15 @@ Only add HIGH and MEDIUM density content.
 
 | Content Type | Location | Format | Max Lines |
 |-------------|----------|--------|-----------|
-| Core Principles | `instructions/coding-principles.md` | MUST/SHOULD statements | 150 |
-| Daily Practices | `instructions/development-practices.md` | Guidelines, examples | 250 |
+| Core Principles | `rules/coding-principles.md` | MUST/SHOULD statements | 150 |
+| Daily Practices | `rules/development-practices.md` | Guidelines, examples | 250 |
 | Tool Setup | `configs/tools.md` | Installation, config locations | 200 |
 | Commands | `workflows/one-liners.md` | Copy-paste commands | 200 |
 | Workflows | `workflows/[name].md` | Step-by-step process | 100-150 |
-| Patterns | `instructions/[topic]-patterns.md` | Reusable patterns | 150-250 |
+| Patterns | `rules/[topic]-patterns.md` | Reusable patterns | 150-250 |
 | Templates | `templates/[name].md` | Fill-in-the-blank | 50-150 |
 | Quick Refs | `templates/quick-reference/[name].md` | At-a-glance | 30-50 |
-| User Prefs | `instructions/claude-code-memory.md` | Personality, preferences | 100 |
+| User Prefs | `rules/claude-code-memory.md` | Personality, preferences | 100 |
 
 ### Decision Tree
 
@@ -265,16 +265,16 @@ Is it a step-by-step process?
   → workflows/[name].md
 
 Is it a coding principle?
-  → instructions/coding-principles.md
+  → rules/coding-principles.md
 
 Is it a daily practice?
-  → instructions/development-practices.md
+  → rules/development-practices.md
 
 Is it a reusable pattern?
-  → instructions/[topic]-patterns.md or templates/
+  → rules/[topic]-patterns.md or templates/
 
 Is it a user preference?
-  → instructions/claude-code-memory.md
+  → rules/claude-code-memory.md
 ```
 
 ---
@@ -353,7 +353,7 @@ REPO_ROOT=$(git rev-parse --show-toplevel)
 cd "$REPO_ROOT"
 
 # Find all markdown links (exclude web-context research directory)
-grep -r "\[.*\](.*\.md)" configs/ instructions/ templates/ workflows/ | \
+grep -r "\[.*\](.*\.md)" configs/ rules/ templates/ workflows/ | \
   sed -E 's/.*\[([^\]]+)\]\(([^)]+)\).*/\1 → \2/' | \
   sort -u
 ```
@@ -386,7 +386,7 @@ done | awk 'length($0) > 50' | sort | uniq -d
 4. **Check file sizes**: Any files exceeding size limits?
 
 ### Monthly Audit
-1. **Measure total context size**: `find configs/ instructions/ templates/ workflows/ -name "*.md" | xargs wc -l | tail -1`
+1. **Measure total context size**: `find configs/ rules/ templates/ workflows/ -name "*.md" | xargs wc -l | tail -1`
 2. **Identify low-value content**: What hasn't been used in 3 months?
 3. **Consolidate**: Any patterns that emerged from multiple files?
 4. **Update README**: Reflect current structure
@@ -475,7 +475,7 @@ workflows/one-liners.md (185 lines)
   ├─ All commands in one place
   └─ Referenced by workflow and config files
 
-instructions/ (4 files, ~350 lines total)
+rules/ (4 files, ~350 lines total)
   └─ Each file < 250 lines, cross-referenced
 
 Total: ~1,000 lines for complete context
@@ -509,7 +509,7 @@ Wasted tokens: 1,800 lines (60%)
 
 ```bash
 # Count total lines in conversation context (exclude web-context)
-find configs/ instructions/ templates/ workflows/ -name "*.md" | xargs wc -l | tail -1
+find configs/ rules/ templates/ workflows/ -name "*.md" | xargs wc -l | tail -1
 
 # Find duplicated content (lines > 50 chars appearing in multiple files)
 for dir in configs instructions templates workflows; do
@@ -517,7 +517,7 @@ for dir in configs instructions templates workflows; do
 done | awk 'length($0) > 50' | sort | uniq -d
 
 # Check file sizes
-find configs/ instructions/ templates/ workflows/ -name "*.md" -exec wc -l {} \; | sort -n
+find configs/ rules/ templates/ workflows/ -name "*.md" -exec wc -l {} \; | sort -n
 
 # Find broken cross-references (within conversation context)
 REPO_ROOT=$(git rev-parse --show-toplevel)

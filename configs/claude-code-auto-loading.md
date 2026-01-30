@@ -6,7 +6,7 @@ Complete reference for how Claude Code automatically loads context into conversa
 
 ## Overview
 
-Claude Code has **specific, built-in mechanisms** for auto-loading context. Custom directories like `.claude/instructions/` or `.claude/custom/` are **NOT automatically loaded** unless explicitly configured.
+Claude Code has **specific, built-in mechanisms** for auto-loading context. Custom directories like `.claude/rules/` or `.claude/custom/` are **NOT automatically loaded** unless explicitly configured.
 
 ---
 
@@ -33,7 +33,7 @@ Claude Code has **specific, built-in mechanisms** for auto-loading context. Cust
 
 ## Related Documentation
 @./docs/architecture.md
-@~/.ai/instructions/coding-principles.md
+@~/.ai/rules/coding-principles.md
 ```
 
 **Import Syntax**: Use `@filepath` to import other files into CLAUDE.md
@@ -80,7 +80,7 @@ Claude Code has **specific, built-in mechanisms** for auto-loading context. Cust
         "hooks": [
           {
             "type": "command",
-            "command": "cat ~/.claude/instructions/00-project-constitution.md"
+            "command": "cat ~/.claude/rules/00-project-constitution.md"
           }
         ]
       }
@@ -130,7 +130,7 @@ Claude Code has **specific, built-in mechanisms** for auto-loading context. Cust
 ### Custom Directories
 
 These are **NOT automatically loaded**:
-- `.claude/instructions/`
+- `.claude/rules/`
 - `.claude/patterns/`
 - `.claude/workflows/`
 - `.claude/custom/`
@@ -195,7 +195,7 @@ These are **NOT automatically loaded**:
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "cat ~/.claude/instructions/00-project-constitution.md"
+        "command": "cat ~/.claude/rules/00-project-constitution.md"
       }]
     }]
   }
@@ -263,12 +263,12 @@ These are **NOT automatically loaded**:
 
 ## Migration Guide
 
-### From `.claude/instructions/` to Proper Auto-Loading
+### From `.claude/rules/` to Proper Auto-Loading
 
 **Before** (not working):
 ```
 ~/.claude/
-└── instructions/
+└── rules/
     ├── file1.md
     ├── file2.md
     └── file3.md
@@ -282,7 +282,7 @@ These are **NOT automatically loaded**:
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "cat ~/.claude/instructions/*.md"
+        "command": "cat ~/.claude/rules/*.md"
       }]
     }]
   }
@@ -292,12 +292,12 @@ These are **NOT automatically loaded**:
 
 **After Option 2** - Rules Directory:
 ```bash
-mv ~/.claude/instructions/*.md ~/.claude/rules/
+mv ~/.claude/rules/*.md ~/.claude/rules/
 ```
 ✓ All files auto-load
 
 **After Option 3** - Hybrid:
-- Critical file stays in instructions/, loaded via SessionStart hook
+- Critical file stays in rules/, loaded via SessionStart hook
 - Other files move to rules/ for auto-loading
 
 ---
@@ -368,7 +368,7 @@ If you inject the same file on every prompt using UserPromptSubmit hooks, contex
 
 ### Files Not Loading
 
-**Symptom**: Added files to `.claude/instructions/` but they're not in context
+**Symptom**: Added files to `.claude/rules/` but they're not in context
 
 **Cause**: Custom directories aren't auto-loaded
 
@@ -394,7 +394,7 @@ If you inject the same file on every prompt using UserPromptSubmit hooks, contex
     "SessionStart": [{
       "hooks": [{
         "type": "command",
-        "command": "echo 'Hook fired!' && cat ~/.claude/instructions/file.md"
+        "command": "echo 'Hook fired!' && cat ~/.claude/rules/file.md"
       }]
     }]
   }
@@ -419,7 +419,7 @@ If you inject the same file on every prompt using UserPromptSubmit hooks, contex
 ## Related Documentation
 
 - [claude-code-usage.md](../workflows/claude-code-usage.md) - Complete Claude Code usage guide
-- [context-efficiency.md](../instructions/context-efficiency.md) - Context management principles
+- [context-efficiency.md](../rules/context-efficiency.md) - Context management principles
 - [claude-permissions.md](claude-permissions.md) - Permission configuration patterns
 
 ---

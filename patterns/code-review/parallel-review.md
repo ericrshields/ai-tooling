@@ -409,4 +409,4 @@ Does this code meet standards? List violations."
 **Related Documentation**:
 - [parallel-review.md](parallel-review.md) - Multi-dimensional review implementation
 - [ci-cd-integration.md](ci-cd-integration.md) - Quality gates and CI/CD
-- [../../instructions/multi-agent-orchestration.md](../../instructions/multi-agent-orchestration.md) - Agent coordination patterns
+- [../../rules/multi-agent-orchestration.md](../../rules/multi-agent-orchestration.md) - Agent coordination patterns

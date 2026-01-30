@@ -10,7 +10,7 @@
 
 ### Agent Definition Validation
 
-**File**: `/home/eshields/.ai/instructions/document-analyzer-agent.md`
+**File**: `/home/eshields/.ai/rules/document-analyzer-agent.md`
 
 ✅ **Structure Validation**:
 - Agent name, purpose, model, tools defined
@@ -60,7 +60,7 @@
 
 ### Agent Definition Validation
 
-**File**: `/home/eshields/.ai/instructions/question-resolver-agent.md`
+**File**: `/home/eshields/.ai/rules/question-resolver-agent.md`
 
 ✅ **Structure Validation**:
 - Agent name, purpose, model, tools defined

@@ -213,5 +213,5 @@ Route to intervention strategy:
 
 **Related Documentation**:
 - [intervention-strategies.md](intervention-strategies.md) - Recovery patterns
-- [../../instructions/self-correction-patterns.md](../../instructions/self-correction-patterns.md) - Self-correction hub
+- [../../rules/self-correction-patterns.md](../../rules/self-correction-patterns.md) - Self-correction hub
 - [../observability/monitoring-implementation.md](../observability/monitoring-implementation.md) - Production monitoring

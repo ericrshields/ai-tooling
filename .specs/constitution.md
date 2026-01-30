@@ -124,7 +124,7 @@ When conflicts arise, follow this priority order:
 
 1. **Constitution** (this file) - Immutable principles
 2. **Patterns** (`templates/patterns/`) - Reusable approaches
-3. **Instructions** (`instructions/`) - Development practices and principles
+3. **Rules** (`rules/`) - Development practices and principles
 4. **Workflows** (`workflows/`) - Specific processes and step-by-step guides
 5. **Configs** (`configs/`) - Tool settings and permissions
 
@@ -146,7 +146,7 @@ When conflicts arise, follow this priority order:
 **Implementation**:
 ```
 README.md (entry point)
-  ├─→ instructions/README.md (hub)
+  ├─→ rules/README.md (hub)
   │    ├─→ coding-principles.md (detail)
   │    └─→ development-practices.md (detail)
   ├─→ workflows/README.md (hub)
@@ -239,7 +239,7 @@ README.md (entry point)
 Established directories serve specific purposes:
 
 - **configs/**: Tool configuration, permissions, quality gates
-- **instructions/**: Development practices, patterns, principles
+- **rules/**: Development practices, patterns, principles
 - **workflows/**: Step-by-step processes, command sequences
 - **templates/**: Reusable templates and quick references
 - **patterns/**: Detailed pattern implementations (organized by category)
@@ -305,7 +305,7 @@ This repository succeeds when:
 ## Related Documentation
 
 - [../README.md](../README.md) - Repository entry point and file catalog
-- [../instructions/context-efficiency.md](../instructions/context-efficiency.md) - Context management principles
-- [../instructions/development-practices.md](../instructions/development-practices.md) - Daily development practices
+- [../rules/context-efficiency.md](../rules/context-efficiency.md) - Context management principles
+- [../rules/development-practices.md](../rules/development-practices.md) - Daily development practices
 - [../configs/quality-gates.md](../configs/quality-gates.md) - Validation patterns and quality standards
 - [../workflows/specification-driven-development.md](../workflows/specification-driven-development.md) - SDD methodology and constitution role

@@ -481,7 +481,7 @@ chmod +x script.sh
 - [claude-allowed-prompts.md](claude-allowed-prompts.md) - Semantic, intent-based permissions for plan mode execution
 - [quality-gates.md](quality-gates.md) - Validation gate patterns and permission system structure
 - [mcp-integration-patterns.md](mcp-integration-patterns.md) - MCP tool permissions
-- [development-practices.md](../instructions/development-practices.md) - Destructive command safety practices
+- [development-practices.md](../rules/development-practices.md) - Destructive command safety practices
 - [tools.md](tools.md) - Claude Code configuration overview
 
 **Permission Systems Overview**:

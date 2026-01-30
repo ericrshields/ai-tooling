@@ -84,7 +84,7 @@ New State: {user: "John", task: "review", file: "auth.py", issue_severity: "high
 
 ## Memory Architecture
 
-For detailed memory patterns, see [../../instructions/agent-memory-patterns.md](../../instructions/agent-memory-patterns.md).
+For detailed memory patterns, see [../../rules/agent-memory-patterns.md](../../rules/agent-memory-patterns.md).
 
 ### Memory Types
 
@@ -218,6 +218,6 @@ For detailed memory patterns, see [../../instructions/agent-memory-patterns.md](
 
 **Related Documentation**:
 - [google-eight-patterns.md](google-eight-patterns.md) - Pattern catalog
-- [../../instructions/agent-memory-patterns.md](../../instructions/agent-memory-patterns.md) - Memory architecture details
-- [../../instructions/multi-agent-orchestration.md](../../instructions/multi-agent-orchestration.md) - Framework selection
-- [../../instructions/context-efficiency.md](../../instructions/context-efficiency.md) - Context management principles
+- [../../rules/agent-memory-patterns.md](../../rules/agent-memory-patterns.md) - Memory architecture details
+- [../../rules/multi-agent-orchestration.md](../../rules/multi-agent-orchestration.md) - Framework selection
+- [../../rules/context-efficiency.md](../../rules/context-efficiency.md) - Context management principles

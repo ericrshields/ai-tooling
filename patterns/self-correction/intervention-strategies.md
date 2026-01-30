@@ -437,5 +437,5 @@ Generate → Self-Critique → Revise → Repeat until convergence
 **Related Documentation**:
 - [monitoring-signals.md](monitoring-signals.md) - This file
 - [intervention-strategies.md](intervention-strategies.md) - Recovery patterns
-- [../../instructions/self-correction-patterns.md](../../instructions/self-correction-patterns.md) - Self-correction hub
+- [../../rules/self-correction-patterns.md](../../rules/self-correction-patterns.md) - Self-correction hub
 - [../observability/monitoring-implementation.md](../observability/monitoring-implementation.md) - Production monitoring

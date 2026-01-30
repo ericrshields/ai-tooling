@@ -182,7 +182,7 @@ When is it okay to skip phases?
 
 **Specification-Driven Development**: Phase 0 creates specification following [../workflows/specification-driven-development.md](../workflows/specification-driven-development.md).
 
-**Testing Strategies**: Phase 3 uses approach selected from [../instructions/coding-principles.md](../instructions/coding-principles.md).
+**Testing Strategies**: Phase 3 uses approach selected from [../rules/coding-principles.md](../rules/coding-principles.md).
 
 **Quality Gates**: Validation scripts implement gates from project standards.
 
@@ -194,6 +194,6 @@ When is it okay to skip phases?
 - [../guides/automation/phase-based-workflows.md](../guides/automation/phase-based-workflows.md) - Detailed workflow patterns and validation scripts
 - [../guides/automation/technology-examples.md](../guides/automation/technology-examples.md) - Language-specific validation commands
 - [../workflows/specification-driven-development.md](../workflows/specification-driven-development.md) - Spec creation
-- [../instructions/coding-principles.md](../instructions/coding-principles.md) - Testing strategies
+- [../rules/coding-principles.md](../rules/coding-principles.md) - Testing strategies
 - [../workflows/script-patterns.md](../workflows/script-patterns.md) - Script patterns
 - [agent-instruction-patterns.md](agent-instruction-patterns.md) - Agent workflow instructions

@@ -366,5 +366,5 @@ Analyze Requirements → Plan Implementation → Implement Code → Run Tests
 
 **Related Documentation**:
 - [state-management.md](state-management.md) - Memory and context patterns
-- [../../instructions/multi-agent-orchestration.md](../../instructions/multi-agent-orchestration.md) - Framework selection
+- [../../rules/multi-agent-orchestration.md](../../rules/multi-agent-orchestration.md) - Framework selection
 - [../../patterns/code-review/parallel-review.md](../../patterns/code-review/parallel-review.md) - Parallel review implementation

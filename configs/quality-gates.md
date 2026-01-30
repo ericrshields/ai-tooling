@@ -109,16 +109,16 @@ One-page quick template for creating validation scripts:
 ## Related Patterns
 
 ### Testing Strategies
-See [instructions/coding-principles.md](../instructions/coding-principles.md) for comprehensive testing strategies (TDD, BDD, ATDD, test-after, hybrid) that feed into quality gates.
+See [rules/coding-principles.md](../rules/coding-principles.md) for comprehensive testing strategies (TDD, BDD, ATDD, test-after, hybrid) that feed into quality gates.
 
 ### Development Practices
-See [instructions/development-practices.md](../instructions/development-practices.md) for destructive command safety protocols and git commit quality standards.
+See [rules/development-practices.md](../rules/development-practices.md) for destructive command safety protocols and git commit quality standards.
 
 ### Script Automation
 See [workflows/script-patterns.md](../workflows/script-patterns.md) for safe automation patterns including fail-fast, atomic operations, and timeout protection.
 
 ### Coding Principles
-See [instructions/coding-principles.md](../instructions/coding-principles.md) for error handling, type safety, security principles, and quality standards.
+See [rules/coding-principles.md](../rules/coding-principles.md) for error handling, type safety, security principles, and quality standards.
 
 ---
 

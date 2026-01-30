@@ -34,7 +34,7 @@ claude agent run document-analyzer \
 - Processing time: <5 minutes for 3 documents
 - Conflict detection: 100% recall on major conflicts
 
-**Full Documentation**: `~/.ai/instructions/document-analyzer-agent.md`
+**Full Documentation**: `~/.ai-context-store/user-wide/rules/document-analyzer-agent.md`
 
 ---
 
@@ -73,7 +73,7 @@ claude agent run question-resolver \
 - Processing time: <5 minutes for typical plan
 - Token usage: 10-15K
 
-**Full Documentation**: `~/.ai/instructions/question-resolver-agent.md`
+**Full Documentation**: `~/.ai-context-store/user-wide/rules/question-resolver-agent.md`
 
 ---
 
@@ -168,7 +168,7 @@ Agents integrate into the five-phase planning pattern:
 ---
 
 **Related Documentation**:
-- [~/.ai/instructions/document-analyzer-agent.md](../../instructions/document-analyzer-agent.md) - Full agent definition
-- [~/.ai/instructions/question-resolver-agent.md](../../instructions/question-resolver-agent.md) - Full agent definition
-- [~/.ai-context-store/user-wide/rules/planning-workflow.md](../../../.ai-context-store/user-wide/rules/planning-workflow.md) - Planning integration
-- [~/.ai-context-store/plans/ai-tooling-improvements-secrets-keeper-retrospective.md](../../../.ai-context-store/plans/ai-tooling-improvements-secrets-keeper-retrospective.md) - Original recommendations
+- `~/.ai-context-store/user-wide/rules/document-analyzer-agent.md` - Full agent definition
+- `~/.ai-context-store/user-wide/rules/question-resolver-agent.md` - Full agent definition
+- `~/.ai-context-store/user-wide/rules/planning-workflow.md` - Planning integration
+- `~/.ai-context-store/plans/ai-tooling-improvements-secrets-keeper-retrospective.md` - Original recommendations

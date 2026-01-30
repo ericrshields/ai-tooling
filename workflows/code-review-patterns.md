@@ -271,5 +271,5 @@ Implement multi-dimensional parallel review with specialized agents (5-6x faster
 - [patterns/code-review/prompt-engineering.md](../patterns/code-review/prompt-engineering.md) - Prompt patterns and techniques
 - [patterns/code-review/parallel-review.md](../patterns/code-review/parallel-review.md) - Multi-dimensional review implementation
 - [patterns/code-review/ci-cd-integration.md](../patterns/code-review/ci-cd-integration.md) - CI/CD pipeline integration
-- [../instructions/multi-agent-orchestration.md](../instructions/multi-agent-orchestration.md) - Agent coordination
-- [../instructions/observability-patterns.md](../instructions/observability-patterns.md) - Monitoring and evaluation
+- [../rules/multi-agent-orchestration.md](../rules/multi-agent-orchestration.md) - Agent coordination
+- [../rules/observability-patterns.md](../rules/observability-patterns.md) - Monitoring and evaluation

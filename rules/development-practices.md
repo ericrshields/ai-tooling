@@ -4,7 +4,7 @@ Critical daily practices that aren't covered in other pattern files. For compreh
 - [coding-principles.md](coding-principles.md) - Testing strategies, error handling, type safety, quality gates
 - [workflows/code-review-patterns.md](../workflows/code-review-patterns.md) - Code review automation and patterns
 - [workflows/script-patterns.md](../workflows/script-patterns.md) - Safe automation patterns
-- [instructions/context-efficiency.md](context-efficiency.md) - Documentation efficiency
+- [rules/context-efficiency.md](context-efficiency.md) - Documentation efficiency
 
 ---
 

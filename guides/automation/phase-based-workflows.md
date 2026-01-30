@@ -420,5 +420,5 @@ echo "✓ Transitioned to phase $NEXT_PHASE"
 - [technology-examples.md](technology-examples.md) - Language-specific validation commands
 - [../../templates/workflow-automation-pattern.md](../../templates/workflow-automation-pattern.md) - Workflow hub
 - [../../workflows/specification-driven-development.md](../../workflows/specification-driven-development.md) - Spec creation
-- [../../instructions/coding-principles.md](../../instructions/coding-principles.md) - Testing strategies
+- [../../rules/coding-principles.md](../../rules/coding-principles.md) - Testing strategies
 - [../../workflows/script-patterns.md](../../workflows/script-patterns.md) - Validation script patterns

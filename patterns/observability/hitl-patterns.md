@@ -432,5 +432,5 @@ else:
 **Related Documentation**:
 - [monitoring-implementation.md](monitoring-implementation.md) - Monitoring and metrics
 - [challenges-solutions.md](challenges-solutions.md) - Common challenges
-- [../../instructions/observability-patterns.md](../../instructions/observability-patterns.md) - Observability hub
+- [../../rules/observability-patterns.md](../../rules/observability-patterns.md) - Observability hub
 - [../../configs/claude-permissions.md](../../configs/claude-permissions.md) - Permission system example

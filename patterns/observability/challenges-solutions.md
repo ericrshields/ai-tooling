@@ -249,4 +249,4 @@ Production AI systems face four critical challenges that observability addresses
 **Related Documentation**:
 - [monitoring-implementation.md](monitoring-implementation.md) - Monitoring setup and metrics
 - [hitl-patterns.md](hitl-patterns.md) - Human oversight patterns
-- [../../instructions/observability-patterns.md](../../instructions/observability-patterns.md) - Observability hub
+- [../../rules/observability-patterns.md](../../rules/observability-patterns.md) - Observability hub

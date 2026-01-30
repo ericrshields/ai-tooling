@@ -309,5 +309,5 @@ if iteration == max_iterations:
 **Related Documentation**:
 - [prompt-engineering.md](prompt-engineering.md) - Prompt patterns for review
 - [parallel-review.md](parallel-review.md) - Multi-dimensional review
-- [../../instructions/observability-patterns.md](../../instructions/observability-patterns.md) - Monitoring and traces
-- [../../instructions/self-correction-patterns.md](../../instructions/self-correction-patterns.md) - Error recovery
+- [../../rules/observability-patterns.md](../../rules/observability-patterns.md) - Monitoring and traces
+- [../../rules/self-correction-patterns.md](../../rules/self-correction-patterns.md) - Error recovery

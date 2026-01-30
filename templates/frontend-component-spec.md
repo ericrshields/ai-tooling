@@ -363,5 +363,5 @@ Track unresolved decisions:
 
 **Related Documentation**:
 - [agent-instruction-patterns.md](agent-instruction-patterns.md) - Instruction patterns
-- [../instructions/coding-principles.md](../instructions/coding-principles.md) - Coding standards
+- [../rules/coding-principles.md](../rules/coding-principles.md) - Coding standards
 - [workflow-automation-pattern.md](workflow-automation-pattern.md) - Development workflow

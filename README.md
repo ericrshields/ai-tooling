@@ -10,16 +10,16 @@
 1. Review [configs/tools.md](configs/tools.md) - Install required tools
 2. Apply [configs/claude-permissions.json](configs/claude-permissions.json) - Set up permissions (see [claude-permissions.md](configs/claude-permissions.md))
 3. Read [configs/claude-code-auto-loading.md](configs/claude-code-auto-loading.md) - Configure auto-loading (CLAUDE.md, rules/, hooks)
-4. Read [instructions/claude-code-memory.md](instructions/claude-code-memory.md) - Configure preferences
+4. Read [rules/claude-code-memory.md](rules/claude-code-memory.md) - Configure preferences
 
 ### Understanding AI Architecture
-1. Review [instructions/multi-agent-orchestration.md](instructions/multi-agent-orchestration.md) - Framework comparison
-2. Read [instructions/agent-memory-patterns.md](instructions/agent-memory-patterns.md) - Memory management
-3. Check [instructions/self-correction-patterns.md](instructions/self-correction-patterns.md) - Error recovery
+1. Review [rules/multi-agent-orchestration.md](rules/multi-agent-orchestration.md) - Framework comparison
+2. Read [rules/agent-memory-patterns.md](rules/agent-memory-patterns.md) - Memory management
+3. Check [rules/self-correction-patterns.md](rules/self-correction-patterns.md) - Error recovery
 
 ### Starting a New Task
-1. Review [instructions/coding-principles.md](instructions/coding-principles.md) - Testing strategies, error handling, quality gates
-2. Check [instructions/development-practices.md](instructions/development-practices.md) - Git commit format, destructive command safety
+1. Review [rules/coding-principles.md](rules/coding-principles.md) - Testing strategies, error handling, quality gates
+2. Check [rules/development-practices.md](rules/development-practices.md) - Git commit format, destructive command safety
 3. Use [workflows/one-liners.md](workflows/one-liners.md) - Command reference
 
 ### Building with AI
@@ -54,23 +54,23 @@ Configuration files and permission systems.
 | [tools.md](configs/tools.md) | Tool reference (Claude Code, rclone, pandoc, gh, jq) with installation patterns |
 | [claude-permissions-future-consideration.json](configs/claude-permissions-future-consideration.json) | Permission decisions and workflow rationale |
 
-### Instructions (instructions/)
+### Rules (rules/)
 
 Agent architecture, coordination, and development principles.
 
 | File | Purpose |
 |------|---------|
-| [multi-agent-orchestration.md](instructions/multi-agent-orchestration.md) | **Web Research**: Framework comparison (LangGraph, CrewAI, AutoGen), Google's 8 design patterns, state management, benchmarks |
-| [observability-patterns.md](instructions/observability-patterns.md) | **Web Research**: Traces/spans/evals, HITL patterns, leading platforms, risk-based routing, regulatory compliance |
-| [self-correction-patterns.md](instructions/self-correction-patterns.md) | **Web Research**: Two-layer architecture, monitoring signals, intervention strategies, error recovery, self-healing |
-| [context-efficiency.md](instructions/context-efficiency.md) | Context management: Single Source of Truth, cross-references, token budget, before-adding checklist |
-| [development-practices.md](instructions/development-practices.md) | **Unique practices**: Git commit guidelines (prose format), destructive command safety, reference priority order |
-| [agent-memory-patterns.md](instructions/agent-memory-patterns.md) | **Web Research**: Memory taxonomy (Factual/Experiential/Working), lifecycle management, context anti-patterns |
-| [ai-tooling-duplication-detector-agent.md](instructions/ai-tooling-duplication-detector-agent.md) | **Agent Definition**: Detects duplication in AI instruction files/configs; validates DRY, modular architecture, token efficiency; 4-block structure validation |
-| [documentation-reviewer-agent.md](instructions/documentation-reviewer-agent.md) | **Agent Definition**: Validates documentation quality, structure, DRY compliance; suggests related agents (writer, indexer, consolidator, analyzer, example-validator) |
-| [plan-reviewer-agent.md](instructions/plan-reviewer-agent.md) | **Agent Definition**: Validates implementation plans for accuracy, efficiency, completeness, security; suggests related agents (optimizer, estimator, architecture-validator, security-reviewer) |
-| [coding-principles.md](instructions/coding-principles.md) | **Testing strategies reference**: TDD, BDD, ATDD, test-after, hybrid approaches with 2026 research; Error handling, type safety, security, quality gates |
-| [claude-code-memory.md](instructions/claude-code-memory.md) | User preferences, personality settings, memory management guidelines |
+| [multi-agent-orchestration.md](rules/multi-agent-orchestration.md) | **Web Research**: Framework comparison (LangGraph, CrewAI, AutoGen), Google's 8 design patterns, state management, benchmarks |
+| [observability-patterns.md](rules/observability-patterns.md) | **Web Research**: Traces/spans/evals, HITL patterns, leading platforms, risk-based routing, regulatory compliance |
+| [self-correction-patterns.md](rules/self-correction-patterns.md) | **Web Research**: Two-layer architecture, monitoring signals, intervention strategies, error recovery, self-healing |
+| [context-efficiency.md](rules/context-efficiency.md) | Context management: Single Source of Truth, cross-references, token budget, before-adding checklist |
+| [development-practices.md](rules/development-practices.md) | **Unique practices**: Git commit guidelines (prose format), destructive command safety, reference priority order |
+| [agent-memory-patterns.md](rules/agent-memory-patterns.md) | **Web Research**: Memory taxonomy (Factual/Experiential/Working), lifecycle management, context anti-patterns |
+| [ai-tooling-duplication-detector-agent.md](rules/ai-tooling-duplication-detector-agent.md) | **Agent Definition**: Detects duplication in AI instruction files/configs; validates DRY, modular architecture, token efficiency; 4-block structure validation |
+| [documentation-reviewer-agent.md](rules/documentation-reviewer-agent.md) | **Agent Definition**: Validates documentation quality, structure, DRY compliance; suggests related agents (writer, indexer, consolidator, analyzer, example-validator) |
+| [plan-reviewer-agent.md](rules/plan-reviewer-agent.md) | **Agent Definition**: Validates implementation plans for accuracy, efficiency, completeness, security; suggests related agents (optimizer, estimator, architecture-validator, security-reviewer) |
+| [coding-principles.md](rules/coding-principles.md) | **Testing strategies reference**: TDD, BDD, ATDD, test-after, hybrid approaches with 2026 research; Error handling, type safety, security, quality gates |
+| [claude-code-memory.md](rules/claude-code-memory.md) | User preferences, personality settings, memory management guidelines |
 
 ### Workflows (workflows/)
 
@@ -141,20 +141,20 @@ README.md (YOU ARE HERE)
     ├── Quick Start
     │   ├─→ configs/tools.md (tool installation)
     │   ├─→ configs/claude-permissions.json (permission setup)
-    │   └─→ instructions/claude-code-memory.md (preferences)
+    │   └─→ rules/claude-code-memory.md (preferences)
     │
     ├── AI Agent Architecture
-    │   ├─→ instructions/multi-agent-orchestration.md (framework selection)
-    │   │   └─→ instructions/agent-memory-patterns.md (state management)
-    │   ├─→ instructions/self-correction-patterns.md (error recovery)
-    │   └─→ instructions/observability-patterns.md (monitoring)
-    │       └─→ instructions/self-correction-patterns.md (HITL integration)
+    │   ├─→ rules/multi-agent-orchestration.md (framework selection)
+    │   │   └─→ rules/agent-memory-patterns.md (state management)
+    │   ├─→ rules/self-correction-patterns.md (error recovery)
+    │   └─→ rules/observability-patterns.md (monitoring)
+    │       └─→ rules/self-correction-patterns.md (HITL integration)
     │
     ├── Core Principles
     │   ├─→ .specs/constitution.md (repository governance)
-    │   ├─→ instructions/coding-principles.md (universal principles)
-    │   ├─→ instructions/development-practices.md (daily practices)
-    │   └─→ instructions/context-efficiency.md (documentation patterns)
+    │   ├─→ rules/coding-principles.md (universal principles)
+    │   ├─→ rules/development-practices.md (daily practices)
+    │   └─→ rules/context-efficiency.md (documentation patterns)
     │
     └── Development Workflows
         ├─→ workflows/specification-driven-development.md
@@ -162,7 +162,7 @@ README.md (YOU ARE HERE)
         ├─→ workflows/tdd-development.md
         │   └─→ workflows/code-review-patterns.md (quality gates)
         ├─→ workflows/code-review-patterns.md
-        │   └─→ instructions/observability-patterns.md (CI/CD integration)
+        │   └─→ rules/observability-patterns.md (CI/CD integration)
         ├─→ workflows/google-docs-setup.md
         │   ├─→ configs/tools.md (rclone + pandoc setup)
         │   └─→ workflows/one-liners.md (commands)
@@ -179,15 +179,15 @@ README.md (YOU ARE HERE)
 Each type of information has ONE authoritative location:
 
 **Agent Architecture**:
-- **Framework selection**: `instructions/multi-agent-orchestration.md`
-- **Memory management**: `instructions/agent-memory-patterns.md`
-- **Error recovery**: `instructions/self-correction-patterns.md`
-- **Monitoring**: `instructions/observability-patterns.md`
+- **Framework selection**: `rules/multi-agent-orchestration.md`
+- **Memory management**: `rules/agent-memory-patterns.md`
+- **Error recovery**: `rules/self-correction-patterns.md`
+- **Monitoring**: `rules/observability-patterns.md`
 
 **Development Practices**:
-- **Core principles**: `instructions/coding-principles.md`
-- **Daily practices**: `instructions/development-practices.md`
-- **Context efficiency**: `instructions/context-efficiency.md`
+- **Core principles**: `rules/coding-principles.md`
+- **Daily practices**: `rules/development-practices.md`
+- **Context efficiency**: `rules/context-efficiency.md`
 
 **Workflows**:
 - **Code review**: `workflows/code-review-patterns.md`
@@ -200,7 +200,7 @@ Each type of information has ONE authoritative location:
 - **Permissions**: `configs/claude-permissions.md`
 - **MCP integration**: `configs/mcp-integration-patterns.md`
 - **Tools**: `configs/tools.md`
-- **User preferences**: `instructions/claude-code-memory.md`
+- **User preferences**: `rules/claude-code-memory.md`
 
 ### Cross-Reference Pattern
 
@@ -224,19 +224,19 @@ Files reference each other instead of duplicating:
 ### When to Read Which File
 
 **Starting a new AI project:**
-1. `instructions/multi-agent-orchestration.md` - Choose framework (LangGraph, CrewAI, AutoGen)
+1. `rules/multi-agent-orchestration.md` - Choose framework (LangGraph, CrewAI, AutoGen)
 2. `workflows/specification-driven-development.md` - Define what to build
 3. `workflows/tdd-development.md` - Build with quality
 4. `workflows/code-review-patterns.md` - Quality gates
 
 **Production deployment:**
-1. `instructions/observability-patterns.md` - Set up monitoring
+1. `rules/observability-patterns.md` - Set up monitoring
 2. `configs/claude-permissions.md` - Configure human oversight
-3. `instructions/self-correction-patterns.md` - Enable autonomous recovery
+3. `rules/self-correction-patterns.md` - Enable autonomous recovery
 
 **Starting a new task:**
-1. `instructions/coding-principles.md` - Testing strategies, error handling, security principles
-2. `instructions/development-practices.md` - Git commit guidelines, destructive command safety
+1. `rules/coding-principles.md` - Testing strategies, error handling, security principles
+2. `rules/development-practices.md` - Git commit guidelines, destructive command safety
 3. `workflows/one-liners.md` - Commands you'll need
 
 **Tool configuration:**
@@ -246,14 +246,14 @@ Files reference each other instead of duplicating:
 4. `workflows/one-liners.md` - Commands for that tool
 
 **Optimizing existing system:**
-1. `instructions/agent-memory-patterns.md` - Improve context efficiency
-2. `instructions/self-correction-patterns.md` - Add error recovery
+1. `rules/agent-memory-patterns.md` - Improve context efficiency
+2. `rules/self-correction-patterns.md` - Add error recovery
 3. `workflows/code-review-patterns.md` - Enhance quality gates
-4. `instructions/context-efficiency.md` - Documentation patterns
+4. `rules/context-efficiency.md` - Documentation patterns
 
 **Troubleshooting issues:**
-1. `instructions/observability-patterns.md` - Use traces to diagnose
-2. `instructions/self-correction-patterns.md` - Implement recovery strategies
+1. `rules/observability-patterns.md` - Use traces to diagnose
+2. `rules/self-correction-patterns.md` - Implement recovery strategies
 3. `workflows/code-review-patterns.md` - Analyze quality gaps
 
 ### Adding New Content
@@ -270,14 +270,14 @@ Before adding content to any memory file:
 **Token Budget**: Every line added consumes context in every future session. Make it count.
 
 **Where to add new content:**
-- **AI agent patterns**: `instructions/multi-agent-orchestration.md` or `instructions/self-correction-patterns.md`
-- **Testing strategies**: `instructions/coding-principles.md` (testing approaches, quality standards)
-- **Git/safety practices**: `instructions/development-practices.md` (commit format, destructive commands)
+- **AI agent patterns**: `rules/multi-agent-orchestration.md` or `rules/self-correction-patterns.md`
+- **Testing strategies**: `rules/coding-principles.md` (testing approaches, quality standards)
+- **Git/safety practices**: `rules/development-practices.md` (commit format, destructive commands)
 - **Tool setup**: `configs/tools.md` or `configs/mcp-integration-patterns.md`
 - **Commands**: `workflows/one-liners.md`
 - **Workflow**: New file in `workflows/` (e.g., `workflows/docker-workflow.md`)
 - **Templates**: New file in `templates/` or `templates/quick-reference/`
-- **Preferences**: `instructions/claude-code-memory.md`
+- **Preferences**: `rules/claude-code-memory.md`
 
 ---
 

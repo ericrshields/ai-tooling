@@ -162,7 +162,7 @@ Specialized agents organized by function. These agents implement the patterns de
 - **context-analyzer**: Deep code analysis, architecture understanding, impact assessment
 - **test-planner**: TDD test strategy, coverage analysis
 - **plan-generator**: Creates implementation plans from requirements
-- **plan-reviewer**: Validates plans for accuracy, efficiency, completeness (see [../instructions/plan-reviewer-agent.md](../instructions/plan-reviewer-agent.md))
+- **plan-reviewer**: Validates plans for accuracy, efficiency, completeness (see [../rules/plan-reviewer-agent.md](../rules/plan-reviewer-agent.md))
 
 **Implementation**:
 - **code-writer**: Implements changes following patterns
@@ -182,7 +182,7 @@ Specialized agents organized by function. These agents implement the patterns de
 - **test-quality-reviewer**: Coverage, brittleness, edge cases
 
 **Documentation Quality**:
-- **documentation-reviewer**: Validates structure, cross-references, quality standards (see [../instructions/documentation-reviewer-agent.md](../instructions/documentation-reviewer-agent.md))
+- **documentation-reviewer**: Validates structure, cross-references, quality standards (see [../rules/documentation-reviewer-agent.md](../rules/documentation-reviewer-agent.md))
 - **documentation-duplication-detector**: DRY validation, identifies duplicated content across files, enforces Single Source of Truth, suggests consolidation
 - **documentation-writer**: Creates/updates documentation
 - **documentation-indexer**: Maintains catalogs, detects drift
@@ -236,5 +236,5 @@ Specialized agents organized by function. These agents implement the patterns de
 - [patterns/constraints-and-boundaries.md](patterns/constraints-and-boundaries.md) - Constraints, path resolution, boundaries, instruction density
 - [patterns/verification-and-output.md](patterns/verification-and-output.md) - Evidence, decision tables, autonomy, output, progress
 - [quick-reference/agent-definition.md](quick-reference/agent-definition.md) - Quick fill-in template
-- [../instructions/multi-agent-orchestration.md](../instructions/multi-agent-orchestration.md) - How agents coordinate
+- [../rules/multi-agent-orchestration.md](../rules/multi-agent-orchestration.md) - How agents coordinate
 - [../configs/quality-gates.md](../configs/quality-gates.md) - Validation patterns

@@ -247,7 +247,7 @@ Each phase could be implemented by specialized agents working in coordination:
 **plan-generator**:
 - Creates detailed implementation plan from requirements
 - Sequences changes, identifies rollback strategies
-- Uses [plan-reviewer-agent](../instructions/plan-reviewer-agent.md) for validation
+- Uses [plan-reviewer-agent](../rules/plan-reviewer-agent.md) for validation
 
 ### Phase 2 Agents: Implementation
 
@@ -296,7 +296,7 @@ Run in parallel for 5-6x speedup (see [code-review-patterns.md](code-review-patt
 - Test maintainability assessment
 
 **documentation-reviewer**:
-- Uses [documentation-reviewer-agent](../instructions/documentation-reviewer-agent.md)
+- Uses [documentation-reviewer-agent](../rules/documentation-reviewer-agent.md)
 - Validates doc updates for code changes
 - Ensures examples and references are current
 
@@ -370,7 +370,7 @@ Run in parallel for 5-6x speedup (see [code-review-patterns.md](code-review-patt
 ## References
 
 - [quality-gates.md](../configs/quality-gates.md) - Quality gate patterns
-- [multi-agent-orchestration.md](../instructions/multi-agent-orchestration.md) - Agent coordination
-- [development-practices.md](../instructions/development-practices.md) - Daily practices
+- [multi-agent-orchestration.md](../rules/multi-agent-orchestration.md) - Agent coordination
+- [development-practices.md](../rules/development-practices.md) - Daily practices
 - [script-patterns.md](script-patterns.md) - Automation patterns
 

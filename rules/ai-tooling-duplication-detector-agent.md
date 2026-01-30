@@ -47,13 +47,13 @@ Specialized agent for detecting duplication in AI instruction files, configurati
 **Scan directories**:
 ```bash
 # Find all instruction and config files
-find .claude/ instructions/ configs/ -name "*.md" -o -name "*.json"
+find .claude/ rules/ configs/ -name "*.md" -o -name "*.json"
 find . -name "AGENTS.md" -o -name ".prompt"
 ```
 
 **Typical locations**:
-- `.claude/instructions/`
-- `instructions/`
+- `.claude/rules/`
+- `rules/`
 - `configs/`
 - `AGENTS.md` (root)
 - `.prompts/`, `.ai/`
@@ -77,7 +77,7 @@ find . -name "AGENTS.md" -o -name ".prompt"
 **Exact Duplication**:
 ```bash
 # Find exact duplicate blocks
-grep -r "PATTERN" .claude/ instructions/ configs/ --include="*.md"
+grep -r "PATTERN" .claude/ rules/ configs/ --include="*.md"
 ```
 
 **Semantic Duplication**:
@@ -178,7 +178,7 @@ See [code-review patterns](../patterns/code-review/prompt-engineering.md)
 
 ### 1. [Description]
 **Locations**:
-- `instructions/file-a.md:45-67`
+- `rules/file-a.md:45-67`
 - `configs/file-b.json:12-18`
 
 **Content**:
@@ -193,8 +193,8 @@ See [code-review patterns](../patterns/code-review/prompt-engineering.md)
 
 ### 1. [Description]
 **Files Involved**:
-- `.claude/instructions/interaction.md` (lines 23-45)
-- `instructions/development-practices.md` (lines 78-92)
+- `.claude/rules/interaction.md` (lines 23-45)
+- `rules/development-practices.md` (lines 78-92)
 
 **Overlap**: Both define git commit message format
 **Recommendation**: Consolidate to `development-practices.md`, reference from interaction.md
@@ -217,7 +217,7 @@ See [code-review patterns](../patterns/code-review/prompt-engineering.md)
 
 ### Missing 4-Block Structure
 - `configs/tools.md` - No clear INSTRUCTIONS/CONTEXT/TASK/OUTPUT blocks
-- `.claude/instructions/patterns.md` - Mixed structure
+- `.claude/rules/patterns.md` - Mixed structure
 
 ### Delimiter Inconsistency
 - 6 files use XML tags (`<context>`)
