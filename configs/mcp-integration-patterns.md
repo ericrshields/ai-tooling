@@ -307,6 +307,41 @@ gh auth login
 rclone config reconnect gdrive
 ```
 
+### Remote/SSH Authentication (OAuth Not Available)
+
+**Problem**: OAuth flows require a browser callback to localhost, which doesn't work when Claude Code runs on a remote server over SSH.
+
+**Solution**: Manually configure API tokens in `~/.claude.json` using Authorization headers.
+
+**Steps**:
+1. Get API token from service's developer settings:
+   - **Todoist**: https://todoist.com/prefs/integrations → Developer → API token
+   - **GitHub**: https://github.com/settings/tokens → Generate new token
+
+2. Edit `~/.claude.json` to add headers:
+```json
+{
+  "mcpServers": {
+    "todoist": {
+      "type": "http",
+      "url": "https://ai.todoist.net/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_TOKEN_HERE"
+      }
+    }
+  }
+}
+```
+
+3. Restart Claude Code for changes to take effect.
+
+**Alternative**: Use SSH port forwarding if you prefer OAuth:
+```bash
+# From local machine, forward callback port
+ssh -L 8080:localhost:8080 user@remote-server
+# Then run /mcp in Claude Code
+```
+
 ### Permission Denied
 ```bash
 # Check current permissions
