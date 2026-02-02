@@ -8,7 +8,7 @@ Industry research and comparative analysis for AI-assisted development workflows
 
 This directory contains synthesized findings from web research on AI development tooling, practices, and patterns as of January 2026. The research focuses on high-level patterns and approaches rather than specific implementations.
 
-**Research Date**: 2026-01-20
+**Research Date**: 2026-01-20 (updated 2026-02-02)
 
 ---
 
@@ -26,6 +26,7 @@ This directory contains synthesized findings from web research on AI development
 | [agent-architecture-patterns.md](agent-architecture-patterns.md) | 424 | Memory systems, self-correction, error recovery |
 | [ai-tooling-duplication-detection.md](ai-tooling-duplication-detection.md) | 421 | **Duplication detection in AI instruction files, DRY principles, modular prompts, 4-block structure, context optimization** |
 | [observability-hitl.md](observability-hitl.md) | 456 | Observability platforms, HITL patterns, regulatory context |
+| [github-ticket-best-practices.md](github-ticket-best-practices.md) | 242 | **GitHub issue structure, acceptance criteria formats, Definition of Ready, user stories, label conventions** |
 
 ### Analysis
 
@@ -33,7 +34,7 @@ This directory contains synthesized findings from web research on AI development
 |------|-------|---------|
 | [comparative-analysis.md](comparative-analysis.md) | 458 | Comparison of our patterns vs. industry practices, gap analysis |
 
-**Total**: ~3,469 lines of synthesized research and analysis
+**Total**: ~3,711 lines of synthesized research and analysis
 
 ---
 
@@ -233,4 +234,4 @@ Read documents in order:
 
 ---
 
-**Created**: 2026-01-20 | **Total Lines**: ~2,727 | **Purpose**: Industry pattern synthesis and gap analysis
+**Created**: 2026-01-20 | **Updated**: 2026-02-02 | **Total Lines**: ~2,969 | **Purpose**: Industry pattern synthesis and gap analysis
