@@ -79,6 +79,7 @@ Practical development workflow patterns and command references.
 | File | Purpose |
 |------|---------|
 | [claude-code-usage.md](workflows/claude-code-usage.md) | Claude Code CLI patterns: context management, memory system, permissions, conversation lifecycle |
+| [claude-code-session-management.md](workflows/claude-code-session-management.md) | Session lifecycle: agent loading, task persistence, /resume trick for reloading without losing tasks |
 | [code-review-patterns.md](workflows/code-review-patterns.md) | **Web Research**: Prompt engineering, multi-dimensional parallel review, AI-on-AI patterns, quality gates, CI/CD integration |
 | [script-patterns.md](workflows/script-patterns.md) | Bash automation patterns: fail-fast, atomic updates, safe operations, timeouts, polling |
 | [tdd-development.md](workflows/tdd-development.md) | **Web Research**: TDD with LLMs, chunked workflows, AI evals, test generation, testing pyramid |
@@ -102,6 +103,7 @@ Reusable templates for agent instructions, component specs, and quick references
 | [quick-reference/component-spec.md](templates/quick-reference/component-spec.md) | One-page component spec template |
 | [quick-reference/quality-gate.md](templates/quick-reference/quality-gate.md) | Quick template for validation scripts |
 | [quick-reference/decision-table.md](templates/quick-reference/decision-table.md) | Quick template for error handling decision tables |
+| [quick-reference/session-management.md](templates/quick-reference/session-management.md) | One-page session management guide: /resume trick, agent loading, task persistence |
 
 ### Patterns (patterns/)
 
