@@ -271,6 +271,99 @@ git config --global core.sshCommand "ssh -i ~/.ssh/eshields-aws-us-west-2.pem"
 
 ---
 
+## npm Cache Management
+
+### The Problem: Unbounded Cache Growth
+
+npm cache can grow to hundreds of GB due to:
+- **No size limit**: npm removed `cache-max` option (deprecated in npm 8+)
+- **Never auto-cleans**: Cache only grows, never shrinks automatically
+- **Corrupted files**: Failed downloads create garbage that forces re-downloads
+- **Real-world impact**: Cache can balloon from 0 to 391GB in 24 hours if corrupted
+
+### Symptoms of Corrupted Cache
+
+- Disk fills rapidly despite clearing cache yesterday
+- npm install takes unusually long
+- Same packages downloaded repeatedly
+- npm process hangs or consumes high CPU/memory
+
+### Diagnosis & Repair
+
+```bash
+# Check cache size
+du -sh ~/.npm
+
+# Verify cache integrity (repairs corruption, compresses data)
+npm cache verify
+
+# If verify fails or cache is too large
+npm cache clean --force
+```
+
+**What `npm cache verify` does**:
+- Validates all cached package checksums
+- Removes corrupted/garbage files
+- Compresses cache data
+- Can free 50-90% of cache size if corrupted
+
+### Prevention: Weekly Maintenance
+
+Add to crontab:
+
+```bash
+crontab -e
+
+# Add this line (runs every Sunday at 2 AM):
+0 2 * * 0 npm cache verify > /tmp/npm-cache-verify.log 2>&1
+```
+
+Or create a maintenance script:
+
+```bash
+# ~/.local/bin/npm-cache-maintenance
+#!/bin/bash
+echo "$(date): Running npm cache verify..." >> /var/log/npm-cache.log
+npm cache verify >> /var/log/npm-cache.log 2>&1
+echo "Disk usage after cleanup:" >> /var/log/npm-cache.log
+df -h /home >> /var/log/npm-cache.log
+```
+
+Then cron:
+```bash
+0 2 * * 0 /home/ubuntu/.local/bin/npm-cache-maintenance
+```
+
+### Alternative: Use pnpm
+
+For projects where possible, switch to `pnpm`:
+
+```bash
+npm install -g pnpm
+cd /project
+pnpm install  # instead of npm install
+```
+
+**Benefits**:
+- Uses 50-70% less disk space (content-addressable cache)
+- Stores each package version once, links to projects
+- Much faster installs on second run
+- Automatic cleanup
+
+### Monitoring
+
+Monitor cache size periodically:
+
+```bash
+# Check if cache is growing too fast
+du -sh ~/.npm
+df -h
+
+# Add to weekly checks or alerts
+```
+
+---
+
 ## Integration with Claude Code
 
 ### Setting Default Shell

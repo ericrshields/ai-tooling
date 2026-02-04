@@ -126,7 +126,7 @@ sudo systemctl status amazon-ssm-agent
 4. Test with `ssh -v` (verbose mode) for detailed handshake info
 
 **Common Causes**:
-- Instance running out of disk space
+- Instance running out of disk space (npm cache bloat is common culprit)
 - Out of memory causing processes to crash
 - SSM agent crashes (if using SSM method)
 - Security group rules changed
@@ -140,9 +140,17 @@ df -h
 # Check memory
 free -h
 
+# If disk is full, check npm cache (can be 100s of GB)
+du -sh ~/.npm
+
+# Repair corrupted npm cache (can free 50-90% of space!)
+npm cache verify
+
 # Increase keepalive if frequent timeouts
 ssh -o ServerAliveInterval=5 username@host
 ```
+
+**npm Cache Bloat**: See [npm Cache Management](./wsl2-setup.md#npm-cache-management) for detailed troubleshooting. Corrupted cache files can cause disk to fill from 0→391GB in 24 hours.
 
 ### "UNKNOWN port 65535" Error (SSM-specific)
 
