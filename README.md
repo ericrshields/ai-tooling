@@ -7,10 +7,11 @@
 ## Quick Start
 
 ### New Machine Setup
-1. Review [configs/tools.md](configs/tools.md) - Install required tools
-2. Apply [configs/claude-permissions.json](configs/claude-permissions.json) - Set up permissions (see [claude-permissions.md](configs/claude-permissions.md))
-3. Read [configs/claude-code-auto-loading.md](configs/claude-code-auto-loading.md) - Configure auto-loading (CLAUDE.md, rules/, hooks)
-4. Read [rules/claude-code-memory.md](rules/claude-code-memory.md) - Configure preferences
+1. Review [guides/environment/](guides/environment/) - System setup (terminal, SSH, WSL2)
+2. Review [configs/tools.md](configs/tools.md) - Install required tools
+3. Apply [configs/claude-permissions.json](configs/claude-permissions.json) - Set up permissions (see [claude-permissions.md](configs/claude-permissions.md))
+4. Read [configs/claude-code-auto-loading.md](configs/claude-code-auto-loading.md) - Configure auto-loading (CLAUDE.md, rules/, hooks)
+5. Read [rules/claude-code-memory.md](rules/claude-code-memory.md) - Configure preferences
 
 ### Understanding AI Architecture
 1. Review [rules/multi-agent-orchestration.md](rules/multi-agent-orchestration.md) - Framework comparison
@@ -122,6 +123,7 @@ Step-by-step guides split from workflow files for progressive disclosure.
 
 | Directory | Purpose |
 |-----------|---------|
+| [environment/](guides/environment/) | **Environment & System Setup**: SSH configuration, terminal setup, WSL2 configuration |
 | [scripting/](guides/scripting/) | Bash scripting guides: error handling, safe operations |
 | [automation/](guides/automation/) | Automation guides: phase-based workflows, technology examples |
 
