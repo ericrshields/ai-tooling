@@ -80,7 +80,9 @@ The script is located at `~/.ai/tools/claude-usage-monitor.py` and is executable
 |--------|---------|-------------|
 | `--days N` | 7 | Analyze sessions from last N days |
 | `--format FMT` | text | Output format: `text` or `json` |
-| `--sessions-dir PATH` | `~/.claude/projects/-home-eshields--ai-context-store/` | Path to session files |
+| `--sessions-dir PATH` | Auto-detected | Path to session files (auto-detects most recent project if not specified) |
+
+**Auto-Detection**: The script automatically finds the most recently modified project in `~/.claude/projects/`. This works across different servers and users without configuration. Override with `--sessions-dir` if needed.
 
 ### Output Interpretation
 
@@ -146,10 +148,13 @@ Run weekly and compare total token counts. Decreasing totals = improved efficien
 5. Update memory files based on findings
 
 **Automation** (optional):
-Set up cron job for automated reporting:
+Set up cron job for automated reporting (installed by `install-monitoring.sh`):
 ```bash
-# Run every Monday at 9am
-0 9 * * 1 ~/.ai/tools/claude-usage-monitor.py --days 7 > ~/.ai/reports/usage-$(date +\%Y-\%m-\%d).txt
+# Run every day at 9am (auto-detects sessions directory)
+0 9 * * * ~/.ai/tools/run-usage-monitor.sh >> ~/.ai/logs/monitor-cron.log 2>&1
+
+# Or with custom sessions directory via environment variable
+0 9 * * * CLAUDE_SESSIONS_DIR=/custom/path ~/.ai/tools/run-usage-monitor.sh >> ~/.ai/logs/monitor-cron.log 2>&1
 ```
 
 ### Example Output

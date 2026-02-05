@@ -6,18 +6,26 @@
 # with timestamps. Designed to be run daily via cron for trending analysis.
 #
 # Usage:
-#   ~/.ai/tools/run-usage-monitor.sh [days]
+#   ~/.ai/tools/run-usage-monitor.sh [days] [sessions_dir]
 #
 # Arguments:
-#   days - Number of days to analyze (default: 7)
+#   days         - Number of days to analyze (default: 7)
+#   sessions_dir - Path to sessions directory (auto-detected if omitted)
+#
+# Environment Variables:
+#   CLAUDE_SESSIONS_DIR - Override sessions directory
 #
 # Cron example (daily at 9am):
 #   0 9 * * * ~/.ai/tools/run-usage-monitor.sh >> ~/.ai/logs/monitor-cron.log 2>&1
+#
+# Cron example with custom sessions directory:
+#   0 9 * * * CLAUDE_SESSIONS_DIR=/custom/path ~/.ai/tools/run-usage-monitor.sh >> ~/.ai/logs/monitor-cron.log 2>&1
 
 set -euo pipefail
 
 # Configuration
 DAYS="${1:-7}"
+SESSIONS_DIR="${2:-${CLAUDE_SESSIONS_DIR:-}}"
 MONITOR_SCRIPT="$HOME/.ai/tools/claude-usage-monitor.py"
 REPORTS_DIR="$HOME/.ai/reports"
 LOG_DIR="$HOME/.ai/logs"
@@ -28,9 +36,17 @@ LATEST_LINK="$REPORTS_DIR/latest.txt"
 # Ensure directories exist
 mkdir -p "$REPORTS_DIR" "$LOG_DIR"
 
+# Build monitor command
+MONITOR_CMD=("$MONITOR_SCRIPT" --days "$DAYS")
+if [ -n "$SESSIONS_DIR" ]; then
+    MONITOR_CMD+=(--sessions-dir "$SESSIONS_DIR")
+    echo "[$(date)] Running usage monitor for last $DAYS days from $SESSIONS_DIR..."
+else
+    echo "[$(date)] Running usage monitor for last $DAYS days (auto-detecting sessions)..."
+fi
+
 # Run monitoring tool
-echo "[$(date)] Running usage monitor for last $DAYS days..."
-if "$MONITOR_SCRIPT" --days "$DAYS" > "$REPORT_FILE"; then
+if "${MONITOR_CMD[@]}" > "$REPORT_FILE"; then
     echo "[$(date)] Report saved to: $REPORT_FILE"
 
     # Update latest symlink

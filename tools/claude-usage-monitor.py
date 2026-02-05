@@ -32,8 +32,32 @@ import argparse
 from pathlib import Path
 from datetime import datetime, timedelta
 from collections import defaultdict, Counter
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 import os
+
+
+def detect_sessions_directory() -> Optional[str]:
+    """
+    Auto-detect Claude Code sessions directory.
+
+    Searches ~/.claude/projects/ for project directories and returns the most
+    recently modified one. Returns None if no projects found.
+    """
+    claude_projects = Path.home() / '.claude' / 'projects'
+
+    if not claude_projects.exists():
+        return None
+
+    # Find all project directories (those starting with -)
+    project_dirs = [d for d in claude_projects.iterdir()
+                   if d.is_dir() and d.name.startswith('-')]
+
+    if not project_dirs:
+        return None
+
+    # Return the most recently modified project directory
+    most_recent = max(project_dirs, key=lambda d: d.stat().st_mtime)
+    return str(most_recent)
 
 
 class ClaudeUsageMonitor:
@@ -368,17 +392,26 @@ def main():
     )
     parser.add_argument(
         '--sessions-dir',
-        default='~/.claude/projects/-home-eshields--ai-context-store/',
-        help='Path to session files directory'
+        default=None,
+        help='Path to session files directory (auto-detected if not specified)'
     )
 
     args = parser.parse_args()
 
+    # Auto-detect sessions directory if not specified
+    sessions_dir = args.sessions_dir
+    if sessions_dir is None:
+        sessions_dir = detect_sessions_directory()
+        if sessions_dir is None:
+            print("Error: Could not auto-detect sessions directory.")
+            print("Please specify --sessions-dir or check that ~/.claude/projects/ exists.")
+            return 1
+
     # Initialize monitor
-    monitor = ClaudeUsageMonitor(args.sessions_dir, args.days)
+    monitor = ClaudeUsageMonitor(sessions_dir, args.days)
 
     # Analyze sessions
-    print(f"Analyzing sessions from {args.sessions_dir}...")
+    print(f"Analyzing sessions from {sessions_dir}...")
     monitor.analyze_all_sessions()
 
     # Generate report
