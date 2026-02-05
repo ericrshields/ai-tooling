@@ -65,7 +65,7 @@ if "${MONITOR_CMD[@]}" > "$REPORT_FILE"; then
         CURRENT_TOKENS=$(grep "Total billable tokens:" "$REPORT_FILE" | awk '{gsub(/,/,""); print $4}')
         PREV_TOKENS=$(grep "Total billable tokens:" "$PREV_REPORT" | awk '{gsub(/,/,""); print $4}')
 
-        if [ -n "$CURRENT_TOKENS" ] && [ -n "$PREV_TOKENS" ]; then
+        if [ -n "$CURRENT_TOKENS" ] && [ -n "$PREV_TOKENS" ] && [ "$PREV_TOKENS" != "0" ]; then
             # Calculate percentage change
             CHANGE=$(awk "BEGIN {printf \"%.1f\", (($CURRENT_TOKENS - $PREV_TOKENS) / $PREV_TOKENS) * 100}")
             echo "[$(date)] Token usage change from previous report: $CHANGE%"
@@ -75,6 +75,8 @@ if "${MONITOR_CMD[@]}" > "$REPORT_FILE"; then
                 echo "[$(date)] WARNING: Significant token usage increase detected: $CHANGE%"
                 # Could add notification here (email, Slack, etc.)
             fi
+        elif [ -n "$CURRENT_TOKENS" ] && [ -n "$PREV_TOKENS" ] && [ "$PREV_TOKENS" = "0" ]; then
+            echo "[$(date)] Token usage change: N/A (previous report had no usage)"
         fi
     fi
 
