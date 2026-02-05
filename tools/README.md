@@ -4,6 +4,48 @@ Utilities for monitoring and optimizing Claude Code usage.
 
 ---
 
+## Automated Installation
+
+Use the install script to set up monitoring on a new server or update an existing installation:
+
+```bash
+# Install monitoring system (first time setup)
+cd ~/.ai
+bash install-monitoring.sh
+
+# Update existing installation (preserves reports and logs)
+bash install-monitoring.sh --update
+```
+
+**What gets installed**:
+- `claude-usage-monitor.py` - Main monitoring script
+- `run-usage-monitor.sh` - Wrapper script for automation
+- Daily cron job (runs at 9am with 7-day rolling analysis)
+- Directory structure: `~/.ai/reports/`, `~/.ai/logs/`
+- `.gitignore` entries for generated content
+
+**Prerequisites**:
+- Python 3.6+ installed
+- Git repository cloned to `~/.ai`
+- Cron service running
+
+**Verification**:
+```bash
+# Test monitoring manually
+~/.ai/tools/run-usage-monitor.sh 7
+
+# View latest report
+cat ~/.ai/reports/latest.txt
+
+# Check cron job
+crontab -l
+
+# Monitor cron logs
+tail -f ~/.ai/logs/monitor-cron.log
+```
+
+---
+
 ## claude-usage-monitor.py
 
 **Purpose**: Analyze Claude Code session files to track tool usage, agent invocations, and token consumption patterns.

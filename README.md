@@ -12,6 +12,7 @@
 3. Apply [configs/claude-permissions.json](configs/claude-permissions.json) - Set up permissions (see [claude-permissions.md](configs/claude-permissions.md))
 4. Read [configs/claude-code-auto-loading.md](configs/claude-code-auto-loading.md) - Configure auto-loading (CLAUDE.md, rules/, hooks)
 5. Read [rules/claude-code-memory.md](rules/claude-code-memory.md) - Configure preferences
+6. Run `bash install-monitoring.sh` - Set up usage monitoring and automated reporting (see [tools/README.md](tools/README.md))
 
 ### Understanding AI Architecture
 1. Review [rules/multi-agent-orchestration.md](rules/multi-agent-orchestration.md) - Framework comparison
