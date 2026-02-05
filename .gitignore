@@ -8,3 +8,7 @@
 
 # Editor settings
 .idea
+
+# Generated monitoring reports and logs
+reports/
+logs/
