@@ -284,6 +284,28 @@ For precise control:
 "Read(package.json)"   // Only matches: package.json (exact path)
 ```
 
+### Prefix Matching Limitation: Flags Before Subcommands
+
+**CRITICAL**: Permission patterns are prefix-matched. Commands with flags before the subcommand (like `git -C`) bypass specific ask/deny patterns.
+
+**Example**:
+```json
+{
+  "allow": ["Bash(git:*)"],           // Matches ALL git commands
+  "ask":  ["Bash(git push:*)"],       // Matches: git push origin main
+  "deny": ["Bash(git push --force:*)"] // Matches: git push --force origin main
+}
+```
+
+`git -C /path push --force` starts with `git -C`, not `git push`, so it:
+- Matches `allow: Bash(git:*)` (auto-approved)
+- Skips `ask: Bash(git push:*)` (no prefix match)
+- Skips `deny: Bash(git push --force:*)` (no prefix match)
+
+**Workaround**: Prohibit `git -C` in AI instructions (CLAUDE.md). Use `cd <path> && git <command>` instead, which ensures the command string starts with `git <subcommand>` and matches ask/deny patterns correctly.
+
+**Affected commands**: Any CLI that accepts flags before subcommands (`git -C`, `docker -H`, `kubectl --context`, etc.).
+
 ### Negation (via deny)
 
 Block specific patterns:
@@ -415,6 +437,14 @@ Claude Code uses **different working directories** for different operations:
 2. Verify settings loaded: `cat ~/.claude/settings.local.json`
 3. Check deny overrides: Deny takes precedence over allow
 4. Restart Claude Code: Settings cache may be stale
+
+### Git -C Bypasses Ask/Deny Patterns
+
+**Symptom**: `git -C /path push --force` runs without ask/deny triggering
+
+**Reason**: Prefix matching evaluates `git -C` first, which matches broad `Bash(git:*)` allow but not specific `Bash(git push --force:*)` deny.
+
+**Fix**: Add to CLAUDE.md: "NEVER use `git -C <path> <command>`. Always use `cd <path> && git <command>` instead." This ensures the command string starts with `git <subcommand>`, allowing ask/deny to match.
 
 ### Secret File Exposed
 
